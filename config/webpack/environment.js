@@ -7,6 +7,7 @@ environment.config.merge({
   resolve: {
     alias: {
       'bootstrap.native$': 'bootstrap.native/dist/bootstrap-native.esm.min.js',
+      jquery$: 'jquery/dist/jquery.slim',
       '@': path.resolve(__dirname, '../../app/javascript')
     }
   }

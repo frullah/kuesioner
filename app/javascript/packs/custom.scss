@@ -10,3 +10,7 @@
 .form-check {
   @apply flex items-center pl-7 mb-4;
 }
+
+.form-group > label {
+  @apply mb-1 inline-block;
+}

@@ -1,15 +1,13 @@
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<%= root_path %>" class="brand-link">
-      <span class="brand-text font-weight-light">Kuesioner</span>
-    </a>
+<aside class="main-sidebar sidebar-dark-primary">
+  <a href="<%= root_path %>" class="brand-link">
+    <span class="brand-text">Kuesioner</span>
+  </a>
 
-    <div class="sidebar">
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-          <%= render_menus %>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-col" role="menu">
+        <%= render_menus %>
+      </ul>
+    </nav>
+  </div>
+</aside>
