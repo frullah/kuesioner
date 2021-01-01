@@ -32,11 +32,10 @@ module Kuesioner
     config.i18n.default_locale = :id
 
     # Don't generate system test files.
-    config.generators.system_tests = nil
-    config.generators.assets = nil
-    config.generators.test_framework :rspec,
-      view_specs: false,
-      request_specs: false,
-      routing_specs: false
+    config.generators do |g|
+      g.system_tests = nil
+      g.assets = nil
+      g.test_framework :rspec, routing_specs: false
+    end
   end
 end
