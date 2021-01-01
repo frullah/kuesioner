@@ -1,0 +1,12 @@
+.form-check-input {
+  transform: scale(1.8);
+  @apply cursor-pointer mt-0;
+
+  & + .form-check-label {
+    @apply cursor-pointer ml-1;
+  }
+}
+
+.form-check {
+  @apply flex items-center pl-7 mb-4;
+}

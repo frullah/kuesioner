@@ -1,0 +1,38 @@
+{
+  "name": "kuesioner",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.1.1",
+    "admin-lte": "^3.0",
+    "autoprefixer": "^9",
+    "bootstrap-scss": "^4.5.3",
+    "bootstrap.native": "^3.0.14",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "tailwindcss": "^2.0.1-compat",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-standard": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-node": "latest",
+    "eslint-plugin-promise": "latest",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "bin/rspec",
+    "test:all": "yarn run test -- --tag '~focus' --tag 'focus'",
+    "test:failures": "yarn run test:all --only-failures",
+    "lint:js": "./node_modules/.bin/eslint --cache app/javascript",
+    "lint-staged": {
+      "*.js": "eslint --cache --fix",
+      "{Guardfile,Gemfile,*.rb}": "bin/standardrb --fix"
+    },
+    "lint:rb": "bin/standardrb"
+  }
+}

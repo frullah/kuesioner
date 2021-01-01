@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kuesioner</title>
+    <%= render "shared/head", cached: true %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="hold-transition control-sidebar-push layout-fixed layout-navbar-fixed">
+      <div class="wrapper">
+        <%= render "shared/header" %>
+        <%= render "shared/sidebar" %>
+        <div class="content-wrapper">
+          <%= yield %>
+        </div>
+      <div>
+  </body>
+</html>
