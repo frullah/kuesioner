@@ -23,7 +23,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           <a class="nav-link" href="/#mata-kuliah">Data Mata Kuliah</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#prodi">Data Prodi</a>
+          <a class="nav-link" href="#{prodis_path}">Data Prodi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/#mahasiswa">Data Mahasiswa</a>
