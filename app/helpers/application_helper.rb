@@ -34,7 +34,7 @@ module ApplicationHelper
           link: "/#laporan-hasil-kuesioner"
         }
       ]
-    when "Dosen" 
+    when "Dosen"
       [
         {
           text: "Laporan Hasil Kuesioner",

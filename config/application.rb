@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -35,8 +35,8 @@ module Kuesioner
     config.generators.system_tests = nil
     config.generators.assets = nil
     config.generators.test_framework :rspec,
-      :view_specs    => false,
-      :request_specs => false,
-      :routing_specs => false
+      view_specs: false,
+      request_specs: false,
+      routing_specs: false
   end
 end

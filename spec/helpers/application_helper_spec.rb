@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 # Specs in this file have access to a helper object that includes
 # the ApplicationHelper. For example:
@@ -14,10 +14,10 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#render_menus" do
     it "should render menus" do
       user_stub = double("User")
-      
+
       allow(helper).to receive(:current_user).and_return(user_stub)
       allow(user_stub).to receive(:authenticatable_type).and_return("Admin")
-      
+
       expect(helper.render_menus).to eq(<<~HTML)
         <li class="nav-item">
           <a class="nav-link" href="/#mata-kuliah">Data Mata Kuliah</a>
