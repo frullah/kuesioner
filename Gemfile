@@ -75,3 +75,5 @@ gem "rails-controller-testing", "~> 1.0"
 gem "i18n_generators", "~> 2.2"
 
 gem "turbolinks_render", "~> 0.9.20"
+
+gem "kaminari", "~> 1.2"

@@ -7,7 +7,14 @@ id:
       name: Nama
       fajar:
         name: Nama
+  views:
+    pagination:
+      first: Awal
+      last: Akhir
+      previous: Sebelumnya
+      next: Selanjutnya
   helpers:
     label:
       fajar:
         name: Nama
+        

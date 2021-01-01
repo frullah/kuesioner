@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary">
-  <a href="<%= root_path %>" class="brand-link">
+  <%= simple_active_link_to root_path, class: "brand-link", active: :exact, active_disable: true do %>
     <span class="brand-text">Kuesioner</span>
-  </a>
+  <% end %>
 
   <div class="sidebar">
     <nav class="mt-2">

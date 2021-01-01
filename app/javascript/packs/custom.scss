@@ -18,3 +18,7 @@
 .octicon {
   @apply fill-current
 }
+
+body:not(.sidebar-closed):not(.sidebar-open) #sidebar-toggler {
+  @apply hidden;
+}

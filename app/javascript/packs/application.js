@@ -8,6 +8,10 @@ require('turbolinks').start()
 
 document.addEventListener('turbolinks:load', () => {
   $(document.body).Layout('fixLayoutHeight')
+
+  // fix adminLTE sidebar state
+  window.dispatchEvent(new Event('resize'))
+
   BSN.initCallback()
 })
 
