@@ -6,15 +6,14 @@
 import $ from 'jquery'
 import 'admin-lte/build/js/Layout'
 import 'admin-lte/build/js/PushMenu'
-import Dropdown from 'bootstrap.native/dist/components/dropdown-native.esm'
+import BSN from 'bootstrap.native'
 
 require('@rails/ujs').start()
 require('turbolinks').start()
 
 document.addEventListener('turbolinks:load', () => {
   $('body').Layout('fixLayoutHeight')
-  // eslint-disable-next-line no-new
-  new Dropdown('[data-toggle="dropdown"]')
+  BSN.initCallback()
 })
 
 // Uncomment to copy all static images under ../images to the output folder and reference
