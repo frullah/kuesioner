@@ -37,10 +37,10 @@ id:
     failure:
       already_authenticated: Anda sudah sign in.
       inactive: Akun anda belum diaktifkan.
-      invalid: Ketidaksesuaian %{authentication_keys} atau password.
+      invalid: &invalid Ketidaksesuaian %{authentication_keys} atau kata sandi.
       last_attempt: Kesempatan terakhir sebelum akun Anda dikunci.
       locked: Akun anda terkunci.
-      not_found_in_database: Ketidaksesuaian %{authentication_keys} atau password.
+      not_found_in_database: *invalid
       timeout: Sesi anda telah kadaluarsa, silahkan sign in untuk melanjutkan.
       unauthenticated: Anda harus masuk sebelum melanjutkan.
       unconfirmed: Anda harus melakukan konfirmasi sebelum melanjutkan.
