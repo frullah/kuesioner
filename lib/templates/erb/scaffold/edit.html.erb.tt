@@ -1,0 +1,12 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <h1 class="mb-4">Mengedit <%= singular_table_name.titleize %></h1>
+
+  <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+
+  <%%= link_to <%= index_helper %>_path, class: "btn btn-primary" do %>
+    <%%= octicon "arrow-left", class: "inline-block" %> Kembali
+  <%% end %>
+  <%%= link_to @<%= singular_table_name %>, class: "btn btn-primary" do %>
+    <%%= octicon "eye", class: "inline-block" %> Lihat
+  <%% end %>
+</div>

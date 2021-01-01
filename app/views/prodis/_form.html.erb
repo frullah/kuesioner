@@ -1,15 +1,4 @@
-<%= bootstrap_form_with(model: prodi) do |form| %>
-  <% if prodi.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(prodi.errors.count, "error") %> prohibited this prodi from being saved:</h2>
-
-      <ul>
-        <% prodi.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= bootstrap_form_with(model: prodi, class: "mb-4") do |form| %>
 
   <%= form.text_field :nama %>
 

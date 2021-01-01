@@ -1,0 +1,13 @@
+id:
+  activerecord:
+    models:
+      fajar:
+        name: Nama
+    attributes:
+      name: Nama
+      fajar:
+        name: Nama
+  helpers:
+    label:
+      fajar:
+        name: Nama

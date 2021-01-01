@@ -1,4 +1,5 @@
 class ProdisController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_prodi, only: [:show, :edit, :update, :destroy]
 
   # GET /prodis
@@ -24,7 +25,7 @@ class ProdisController < ApplicationController
     @prodi = Prodi.new(prodi_params)
 
     if @prodi.save
-      redirect_to @prodi, notice: "Prodi was successfully created."
+      redirect_to @prodi, notice: "Prodi berhasil dibuat."
     else
       render :new
     end
@@ -33,7 +34,7 @@ class ProdisController < ApplicationController
   # PATCH/PUT /prodis/1
   def update
     if @prodi.update(prodi_params)
-      redirect_to @prodi, notice: "Prodi was successfully updated."
+      redirect_to @prodi, notice: "Prodi berhasil diubah."
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class ProdisController < ApplicationController
   # DELETE /prodis/1
   def destroy
     @prodi.destroy
-    redirect_to prodis_url, notice: "Prodi was successfully destroyed."
+    redirect_to prodis_url, notice: "Prodi berhasil dihapus."
   end
 
   private

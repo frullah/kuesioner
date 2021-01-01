@@ -1,25 +1,35 @@
-<h1 class="mb-4">Prodis</h1>
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nama</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1 class="mb-4">Data Prodi</h1>
 
-  <tbody>
-    <% @prodis.each do |prodi| %>
+  <table class="table bg-white">
+    <thead>
       <tr>
-        <td><%= prodi.nama %></td>
-        <td><%= link_to 'Show', prodi %></td>
-        <td><%= link_to 'Edit', edit_prodi_path(prodi) %></td>
-        <td><%= link_to 'Destroy', prodi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th class="border p-2 text-left">Nama</th>
+        <th class="border p-2 text-left">Aksi</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @prodis.each do |prodi| %>
+        <tr class="group border-t border-gray-400 hover:bg-gray-100">
+          <td class="p-3 border"><%= prodi.nama %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", prodi, class: "btn btn-primary" %>
+            <%= link_to octicon("pencil", height: 24), edit_prodi_path(prodi), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), prodi, method: :delete, data: { confirm: 'Hapus Prodi ?' }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Prodi', new_prodi_path %>
+  <br>
+
+  <%= link_to 'Buat Prodi', new_prodi_path, class: "btn btn-primary" %>
+
+</div>

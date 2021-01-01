@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_034526) do
+ActiveRecord::Schema.define(version: 2021_01_01_102825) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nama", limit: 64
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 2021_01_01_034526) do
   end
 
   create_table "prodis", force: :cascade do |t|
-    t.string "nama", limit: 32
+    t.string "nama", limit: 32, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["nama"], name: "index_prodis_on_nama", unique: true
   end
 
   create_table "users", force: :cascade do |t|

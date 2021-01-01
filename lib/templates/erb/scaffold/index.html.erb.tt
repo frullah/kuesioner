@@ -1,0 +1,40 @@
+<div class="container">
+<%% if notice -%>
+  <div class="alert alert-info" id="notice"><%%= notice %></div>
+<%% end %>
+
+  <h1 class="mb-4">Data <%= singular_table_name.titleize %></h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+        <th class="border p-2 text-left"><%= I18n.t(
+          "helpers.label.#{singular_table_name}.#{attribute.name}",
+          default: attribute.human_name
+        ) %></th>
+  <% end %>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+        <tr class="group hover:bg-gray-100">
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <td class="p-3 border"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
+  <% end %>
+          <td class="border px-2">
+            <%%= link_to "Lihat", <%= singular_table_name %>, class: "btn btn-primary" %>
+            <%%= link_to "Ubah", edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-primary mx-0.5" %>
+            <%%= link_to octicon("trash"), <%= singular_table_name %>, method: :delete, data: { confirm: 'Hapus <%= singular_table_name.titleize %> ?' }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <%% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%%= link_to 'Buat <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+</div>

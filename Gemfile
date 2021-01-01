@@ -71,3 +71,7 @@ gem "octicons_helper", "~> 11.2"
 gem "simple_active_link_to", "~> 1.0"
 
 gem "rails-controller-testing", "~> 1.0"
+
+gem "i18n_generators", "~> 2.2"
+
+gem "turbolinks_render", "~> 0.9.20"

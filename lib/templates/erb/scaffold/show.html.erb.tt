@@ -1,0 +1,31 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <%% if notice -%>
+    <div class="alert alert-info" id="notice"><%%= notice %></div>
+  <%% end %>
+
+  <h1 class="mb-4">Lihat Data <%= singular_table_name.titleize %></h1>
+
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <p class="py-2">
+    <strong><%= attribute.human_name %>:</strong>
+<% if attribute.attachment? -%>
+    <%%= link_to @<%= singular_table_name %>.<%= attribute.column_name %>.filename, @<%= singular_table_name %>.<%= attribute.column_name %> if @<%= singular_table_name %>.<%= attribute.column_name %>.attached? %>
+<% elsif attribute.attachments? -%>
+    <%% @<%= singular_table_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
+      <div><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></div>
+    <%% end %>
+<% else -%>
+    <%%= @<%= singular_table_name %>.<%= attribute.column_name %> %>
+<% end -%>
+  </p>
+
+<% end -%>
+  <div class="mt-4">
+    <%%= link_to <%= index_helper %>_path, class: "btn btn-primary" do %>
+      <%%= octicon "arrow-left", class: "inline-block" %> Kembali
+    <%% end %>
+    <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-primary" do %>
+      <%%= octicon "pencil", class: "inline-block" %> Ubah
+    <%% end %>
+  </div>
+</div>
