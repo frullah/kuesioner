@@ -11,7 +11,7 @@ module ApplicationHelper
         },
         {
           text: "Data Prodi",
-          link: "/#prodi"
+          link: prodis_path
         },
         {
           text: "Data Mahasiswa",
