@@ -20,13 +20,13 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       expect(helper.render_menus).to eq(<<~HTML)
         <li class="nav-item">
-          <a class="nav-link" href="/#mata-kuliah">Data Mata Kuliah</a>
+          <a class="nav-link" href="#{mata_kuliahs_path}">Data Mata Kuliah</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#{prodis_path}">Data Prodi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#mahasiswa">Data Mahasiswa</a>
+          <a class="nav-link" href="#{mahasiswas_path}">Data Mahasiswa</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/#dosen">Data Dosen</a>

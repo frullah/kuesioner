@@ -1,0 +1,39 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Mahasiswa</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">NPM</th>
+          <th class="border p-2 text-left">Nama</th>
+          <th class="border p-2 text-left">Prodi</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @mahasiswas.each do |mahasiswa| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= mahasiswa.npm %></td>
+            <td class="p-3 border"><%= mahasiswa.nama %></td>
+            <td class="p-3 border"><%= mahasiswa.prodi.nama %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", mahasiswa, class: "btn btn-primary" %>
+            <%= link_to "Ubah", edit_mahasiswa_path(mahasiswa), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), mahasiswa, method: :delete, data: { confirm: 'Hapus Mahasiswa ?' }, class: "btn btn-danger", remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Mahasiswa', new_mahasiswa_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,17 @@
+<%= bootstrap_form_with(model: mata_kuliah, class: "mb-4") do |form| %>
+
+  <%= form.text_field :nama %>
+
+
+  <%= form.select :prodi_id, prodi_options %>
+
+
+  <%= form.telephone_field :sks %>
+
+
+  <%= form.telephone_field :semester %>
+
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+<% end %>

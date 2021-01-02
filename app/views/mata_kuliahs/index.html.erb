@@ -1,0 +1,41 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Mata Kuliah</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">Nama</th>
+          <th class="border p-2 text-left">Prodi</th>
+          <th class="border p-2 text-left">Sks</th>
+          <th class="border p-2 text-left">Semester</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @mata_kuliahs.each do |mata_kuliah| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= mata_kuliah.nama %></td>
+            <td class="p-3 border"><%= mata_kuliah.prodi.nama %></td>
+            <td class="p-3 border"><%= mata_kuliah.sks %></td>
+            <td class="p-3 border"><%= mata_kuliah.semester %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", mata_kuliah, class: "btn btn-primary" %>
+            <%= link_to "Ubah", edit_mata_kuliah_path(mata_kuliah), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), mata_kuliah, method: :delete, data: { confirm: 'Hapus Mata Kuliah ?' }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Mata Kuliah', new_mata_kuliah_path, class: "btn btn-primary" %>
+</div>

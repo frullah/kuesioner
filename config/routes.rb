@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mahasiswas
+  resources :mata_kuliahs
   resources :prodis
   devise_for :users, controllers: {sessions: "users/sessions"}
 

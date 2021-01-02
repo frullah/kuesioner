@@ -9,7 +9,7 @@ module ApplicationHelper
       [
         {
           text: "Data Mata Kuliah",
-          link: "/#mata-kuliah"
+          link: mata_kuliahs_path
         },
         {
           text: "Data Prodi",
@@ -17,7 +17,7 @@ module ApplicationHelper
         },
         {
           text: "Data Mahasiswa",
-          link: "/#mahasiswa"
+          link: mahasiswas_path
         },
         {
           text: "Data Dosen",
