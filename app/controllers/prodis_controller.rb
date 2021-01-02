@@ -4,7 +4,7 @@ class ProdisController < ApplicationController
 
   # GET /prodis
   def index
-    @prodis = Prodi.page(params[:page]).per(3)
+    @prodis = Prodi.page(params[:page])
   end
 
   # GET /prodis/1

@@ -20,5 +20,6 @@ RSpec.describe "Logins", type: :system do
     fill_in "Username", with: user.username
     fill_in "Kata sandi", with: user.password
     expect { click_button "Log in" }.not_to change(page, :current_path)
+    expect(page).to have_content("Ketidaksesuaian Username atau kata sandi")
   end
 end

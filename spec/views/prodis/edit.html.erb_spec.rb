@@ -11,7 +11,6 @@ RSpec.describe "prodis/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", prodi_path(@prodi), "post" do
-
       assert_select "input[name=?]", "prodi[nama]"
     end
   end

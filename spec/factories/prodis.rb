@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :prodi do
-    nama { "MyString" }
+    sequence(:nama) { |i| "prodi#{i}" }
   end
 end
