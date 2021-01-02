@@ -16,9 +16,12 @@
 }
 
 .octicon {
-  @apply fill-current
+  @apply fill-current;
 }
 
-body:not(.sidebar-closed):not(.sidebar-open) #sidebar-toggler {
-  @apply hidden;
+// hide sidebar-toggler when sidebar is not permanent adminLTE 
+@media screen and (min-width: 992px) {
+  #sidebar-toggler {
+    @apply hidden;
+  }
 }
