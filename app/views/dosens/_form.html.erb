@@ -1,0 +1,13 @@
+<%= bootstrap_form_with(model: dosen, class: "mb-4") do |form| %>
+
+  <%= form.telephone_field :nidn %>
+
+
+  <%= form.text_field :nama %>
+
+  <%= form.text_field :pendidikan %>
+
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dosens
   resources :mahasiswas
   resources :mata_kuliahs
   resources :prodis

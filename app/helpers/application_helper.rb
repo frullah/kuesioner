@@ -21,7 +21,7 @@ module ApplicationHelper
         },
         {
           text: "Data Dosen",
-          link: "/#dosen"
+          link: dosens_path
         },
         {
           text: "Data Kategori Kuesioner",

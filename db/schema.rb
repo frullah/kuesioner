@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_02_164311) do
+ActiveRecord::Schema.define(version: 2021_01_03_111655) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nama", limit: 64
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dosens", force: :cascade do |t|
+    t.string "nidn", limit: 14, null: false
+    t.string "nama", limit: 48, null: false
+    t.string "pendidikan", limit: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nidn"], name: "index_dosens_on_nidn", unique: true
   end
 
   create_table "mahasiswas", force: :cascade do |t|

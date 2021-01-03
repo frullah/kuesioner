@@ -1,0 +1,39 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Dosen</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">Nidn</th>
+          <th class="border p-2 text-left">Nama</th>
+          <th class="border p-2 text-left">Pendidikan</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @dosens.each do |dosen| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= dosen.nidn %></td>
+            <td class="p-3 border"><%= dosen.nama %></td>
+            <td class="p-3 border"><%= dosen.pendidikan %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", dosen, class: "btn btn-primary" %>
+            <%= link_to octicon("pencil", height: 24), edit_dosen_path(dosen), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), dosen, method: :delete, data: { confirm: 'Hapus Dosen ?' }, class: "btn btn-danger", remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Dosen', new_dosen_path, class: "btn btn-primary" %>
+</div>
