@@ -28,8 +28,8 @@ module ApplicationHelper
           link: kategori_kuesioners_path
         },
         {
-          text: "Data Item Kuesionr",
-          link: "/#item-kuesioner"
+          text: "Data Item Kuesioner",
+          link: item_kuesioners_path
         },
         {
           text: "Laporan Hasil Kuesioner",

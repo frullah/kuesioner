@@ -1,0 +1,12 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <h1 class="mb-4">Mengedit Item Kuesioner</h1>
+
+  <%= render 'form', item_kuesioner: @item_kuesioner %>
+
+  <%= link_to item_kuesioners_path, class: "btn btn-primary" do %>
+    <%= octicon "arrow-left", class: "inline-block" %> Kembali
+  <% end %>
+  <%= link_to @item_kuesioner, class: "btn btn-primary" do %>
+    <%= octicon "eye", class: "inline-block" %> Lihat
+  <% end %>
+</div>

@@ -35,7 +35,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           <a class="nav-link" href="#{kategori_kuesioners_path}">Data Kategori Kuesioner</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#item-kuesioner">Data Item Kuesionr</a>
+          <a class="nav-link" href="#{item_kuesioners_path}">Data Item Kuesioner</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/#laporan-hasil-kuesioner">Laporan Hasil Kuesioner</a>
