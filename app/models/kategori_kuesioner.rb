@@ -1,0 +1,2 @@
+class KategoriKuesioner < ApplicationRecord
+end

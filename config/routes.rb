@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :kategori_kuesioners
   resources :dosens
   resources :mahasiswas
   resources :mata_kuliahs

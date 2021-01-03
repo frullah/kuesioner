@@ -25,7 +25,7 @@ module ApplicationHelper
         },
         {
           text: "Data Kategori Kuesioner",
-          link: "/#kategori-kuesioner"
+          link: kategori_kuesioners_path
         },
         {
           text: "Data Item Kuesionr",

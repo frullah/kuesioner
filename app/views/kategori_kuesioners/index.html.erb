@@ -1,0 +1,35 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Kategori Kuesioner</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">Nama</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @kategori_kuesioners.each do |kategori_kuesioner| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= kategori_kuesioner.nama %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", kategori_kuesioner, class: "btn btn-primary" %>
+            <%= link_to octicon("pencil", height: 24), edit_kategori_kuesioner_path(kategori_kuesioner), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), kategori_kuesioner, method: :delete, data: { confirm: 'Hapus Kategori Kuesioner ?' }, class: "btn btn-danger", remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Kategori Kuesioner', new_kategori_kuesioner_path, class: "btn btn-primary" %>
+</div>

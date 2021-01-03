@@ -1,0 +1,12 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <h1 class="mb-4">Mengedit Kategori Kuesioner</h1>
+
+  <%= render 'form', kategori_kuesioner: @kategori_kuesioner %>
+
+  <%= link_to kategori_kuesioners_path, class: "btn btn-primary" do %>
+    <%= octicon "arrow-left", class: "inline-block" %> Kembali
+  <% end %>
+  <%= link_to @kategori_kuesioner, class: "btn btn-primary" do %>
+    <%= octicon "eye", class: "inline-block" %> Lihat
+  <% end %>
+</div>
