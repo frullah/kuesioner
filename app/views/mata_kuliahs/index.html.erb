@@ -27,7 +27,7 @@
   
           <td class="border px-2">
             <%= link_to "Lihat", mata_kuliah, class: "btn btn-primary" %>
-            <%= link_to "Ubah", edit_mata_kuliah_path(mata_kuliah), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("pencil", height: 24), edit_mata_kuliah_path(mata_kuliah), class: "btn btn-primary mx-0.5" %>
             <%= link_to octicon("trash"), mata_kuliah, method: :delete, data: { confirm: 'Hapus Mata Kuliah ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
