@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :kategori_kuesioner do
-    nama { "MyString" }
+    sequence(:nama) { |i| "nama#{i}" }
   end
 end

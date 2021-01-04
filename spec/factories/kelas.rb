@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :kelas do
-    nama { "MyString" }
-    prodi { nil }
+    sequence(:nama) { |i| "nama#{i}" }
+    prodi
   end
 end
