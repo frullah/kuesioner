@@ -16,6 +16,10 @@ module ApplicationHelper
           link: prodis_path
         },
         {
+          text: "Data Kelas",
+          link: kelas_index_path
+        },
+        {
           text: "Data Mahasiswa",
           link: mahasiswas_path
         },

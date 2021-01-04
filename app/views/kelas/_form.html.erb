@@ -1,0 +1,11 @@
+<%= bootstrap_form_with(model: kelas, class: "mb-4") do |form| %>
+
+  <%= form.text_field :nama %>
+
+
+  <%= form.select :prodi_id, Prodi.pluck(:nama, :id) %>
+
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+<% end %>

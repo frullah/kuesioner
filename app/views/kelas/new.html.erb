@@ -1,0 +1,9 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <h1 class="mb-4">Buat Kelas</h1>
+
+  <%= render 'form', kelas: @kelas %>
+
+  <%= link_to kelas_index_path, class: "btn btn-primary" do %>
+    <%= octicon "arrow-left", class: "inline-block" %> Kembali
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_113456) do
+ActiveRecord::Schema.define(version: 2021_01_04_011519) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nama", limit: 64
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2021_01_03_113456) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nama"], name: "index_kategori_kuesioners_on_nama", unique: true
+  end
+
+  create_table "kelas", force: :cascade do |t|
+    t.string "nama", limit: 32
+    t.integer "prodi_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prodi_id"], name: "index_kelas_on_prodi_id"
   end
 
   create_table "mahasiswas", force: :cascade do |t|
@@ -87,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_01_03_113456) do
   end
 
   add_foreign_key "item_kuesioners", "kategori_kuesioners"
+  add_foreign_key "kelas", "prodis"
   add_foreign_key "mahasiswas", "prodis"
   add_foreign_key "mata_kuliahs", "prodis"
 end

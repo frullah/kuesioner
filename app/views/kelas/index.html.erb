@@ -1,0 +1,37 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Kelas</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">Nama</th>
+          <th class="border p-2 text-left">Prodi</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @kelas.each do |kelas| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= kelas.nama %></td>
+            <td class="p-3 border"><%= kelas.prodi.nama %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", kelas, class: "btn btn-primary" %>
+            <%= link_to octicon("pencil", height: 24), edit_kelas_path(kelas), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), kelas, method: :delete, data: { confirm: 'Hapus Kelas ?' }, class: "btn btn-danger", remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Kelas', new_kelas_path, class: "btn btn-primary" %>
+</div>
