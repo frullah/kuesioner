@@ -1,0 +1,36 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <% if notice -%>
+    <div class="alert alert-info" id="notice"><%= notice %></div>
+  <% end %>
+
+  <h1 class="mb-4">Lihat Data Jadwal Mata Kuliah</h1>
+
+  <p class="py-2">
+    <strong>Mata kuliah:</strong>
+    <%= @jadwal_mata_kuliah.mata_kuliah_id %>
+  </p>
+
+  <p class="py-2">
+    <strong>Dosen:</strong>
+    <%= @jadwal_mata_kuliah.dosen_id %>
+  </p>
+
+  <p class="py-2">
+    <strong>Tahun akademik:</strong>
+    <%= @jadwal_mata_kuliah.tahun_akademik_id %>
+  </p>
+
+  <p class="py-2">
+    <strong>Kelas:</strong>
+    <%= @jadwal_mata_kuliah.kelas_id %>
+  </p>
+
+  <div class="mt-4">
+    <%= link_to jadwal_mata_kuliahs_path, class: "btn btn-primary" do %>
+      <%= octicon "arrow-left", class: "inline-block" %> Kembali
+    <% end %>
+    <%= link_to edit_jadwal_mata_kuliah_path(@jadwal_mata_kuliah), class: "btn btn-primary" do %>
+      <%= octicon "pencil", class: "inline-block" %> Ubah
+    <% end %>
+  </div>
+</div>

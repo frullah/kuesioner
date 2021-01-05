@@ -1,0 +1,2 @@
+module JadwalMataKuliahsHelper
+end

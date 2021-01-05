@@ -1,0 +1,41 @@
+<div class="container">
+<% if notice -%>
+  <div class="alert alert-info" id="notice"><%= notice %></div>
+<% end %>
+
+  <h1 class="mb-4">Data Jadwal Mata Kuliah</h1>
+
+  <table class="table bg-white">
+    <thead>
+      <tr>
+          <th class="border p-2 text-left">Mata kuliah</th>
+          <th class="border p-2 text-left">Dosen</th>
+          <th class="border p-2 text-left">Tahun akademik</th>
+          <th class="border p-2 text-left">Kelas</th>
+  
+        <th>Aksi</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @jadwal_mata_kuliahs.each do |jadwal_mata_kuliah| %>
+        <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= jadwal_mata_kuliah.mata_kuliah.nama %></td>
+            <td class="p-3 border"><%= jadwal_mata_kuliah.dosen.nama %></td>
+            <td class="p-3 border"><%= jadwal_mata_kuliah.tahun_akademik.tahun %></td>
+            <td class="p-3 border"><%= jadwal_mata_kuliah.kelas.nama %></td>
+  
+          <td class="border px-2">
+            <%= link_to "Lihat", jadwal_mata_kuliah, class: "btn btn-primary" %>
+            <%= link_to octicon("pencil", height: 24), edit_jadwal_mata_kuliah_path(jadwal_mata_kuliah), class: "btn btn-primary mx-0.5" %>
+            <%= link_to octicon("trash"), jadwal_mata_kuliah, method: :delete, data: { confirm: 'Hapus Jadwal Mata Kuliah ?' }, class: "btn btn-danger", remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Buat Jadwal Mata Kuliah', new_jadwal_mata_kuliah_path, class: "btn btn-primary" %>
+</div>

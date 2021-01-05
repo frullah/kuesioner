@@ -1,0 +1,17 @@
+<%= bootstrap_form_with(model: jadwal_mata_kuliah, class: "mb-4") do |form| %>
+
+  <%= form.select :mata_kuliah_id, MataKuliah.pluck(:nama, :id) %>
+
+
+  <%= form.select :dosen_id, Dosen.pluck(:nama, :id) %>
+
+
+  <%= form.select :tahun_akademik_id, TahunAkademik.all.map { |x| [x.display_name, x.id] } %>
+
+
+  <%= form.select :kelas_id, Kelas.pluck(:nama, :id) %>
+
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+<% end %>

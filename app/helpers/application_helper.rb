@@ -32,6 +32,10 @@ module ApplicationHelper
           link: dosens_path
         },
         {
+          text: "Data Jadwal Mata Kuliah",
+          link: jadwal_mata_kuliahs_path
+        },
+        {
           text: "Data Kategori Kuesioner",
           link: kategori_kuesioners_path
         },

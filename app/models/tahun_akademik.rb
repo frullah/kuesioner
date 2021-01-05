@@ -8,4 +8,8 @@ class TahunAkademik < ApplicationRecord
   def semester
     ganjil ? "Ganjil" : "Genap"
   end
+
+  def display_name
+    "#{tahun} - #{semester}"
+  end
 end
