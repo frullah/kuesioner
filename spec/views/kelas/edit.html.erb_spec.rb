@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "kelas/edit", type: :view do
   before(:each) do
-    @kelas = assign(:kelas, Kelas.create!(
-      nama: "MyString",
-      prodi: nil
-    ))
+    @kelas = assign(:kelas, FactoryBot.create(:kelas))
   end
 
   it "renders the edit kelas form" do
@@ -15,7 +12,7 @@ RSpec.describe "kelas/edit", type: :view do
 
       assert_select "input[name=?]", "kelas[nama]"
 
-      assert_select "input[name=?]", "kelas[prodi_id]"
+      assert_select "select[name=?]", "kelas[prodi_id]"
     end
   end
 end

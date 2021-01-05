@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tahun_akademiks
   resources :kelas
   resources :item_kuesioners
   resources :kategori_kuesioners

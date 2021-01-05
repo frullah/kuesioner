@@ -1,0 +1,9 @@
+<div class="container mx-auto" style="max-width: 640px">
+  <h1 class="mb-4">Buat Tahun Akademik</h1>
+
+  <%= render 'form', tahun_akademik: @tahun_akademik %>
+
+  <%= link_to tahun_akademiks_path, class: "btn btn-primary" do %>
+    <%= octicon "arrow-left", class: "inline-block" %> Kembali
+  <% end %>
+</div>

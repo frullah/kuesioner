@@ -20,6 +20,10 @@ module ApplicationHelper
           link: kelas_index_path
         },
         {
+          text: "Data Tahun Akademik",
+          link: tahun_akademiks_path
+        },
+        {
           text: "Data Mahasiswa",
           link: mahasiswas_path
         },

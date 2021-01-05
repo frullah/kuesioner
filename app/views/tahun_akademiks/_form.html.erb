@@ -1,0 +1,14 @@
+<%= bootstrap_form_with(model: tahun_akademik, class: "mb-4") do |form| %>
+
+  <%= form.number_field :tahun %>
+
+
+  <%= form.form_group :ganjil, label: {text: "Semester"} do %>
+    <%= form.radio_button :ganjil, true, label: "Ganjil" %>
+    <%= form.radio_button :ganjil, false, label: "Genap" %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+<% end %>
