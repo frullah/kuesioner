@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
     t.integer "dosen_id", null: false
     t.integer "tahun_akademik_id", null: false
     t.integer "kelas_id", null: false
+    t.integer "hari", limit: 1, null: false
+    t.time "waktu", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["dosen_id"], name: "index_jadwal_mata_kuliahs_on_dosen_id"
@@ -75,12 +77,11 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
 
   create_table "mata_kuliahs", force: :cascade do |t|
     t.string "nama", limit: 48
-    t.integer "prodi_id", null: false
     t.integer "sks", limit: 1
     t.integer "semester", limit: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["prodi_id"], name: "index_mata_kuliahs_on_prodi_id"
+    t.index ["nama"], name: "index_mata_kuliahs_on_nama", unique: true
   end
 
   create_table "prodis", force: :cascade do |t|
@@ -121,5 +122,4 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
   add_foreign_key "jadwal_mata_kuliahs", "tahun_akademiks"
   add_foreign_key "kelas", "prodis"
   add_foreign_key "mahasiswas", "prodis"
-  add_foreign_key "mata_kuliahs", "prodis"
 end

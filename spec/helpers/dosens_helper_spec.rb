@@ -11,5 +11,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DosensHelper, type: :helper do
-  it { is_expected.to include(MataKuliahsHelper) }
 end

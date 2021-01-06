@@ -9,7 +9,6 @@
     <thead>
       <tr>
           <th class="border p-2 text-left">Nama</th>
-          <th class="border p-2 text-left">Prodi</th>
           <th class="border p-2 text-left">Sks</th>
           <th class="border p-2 text-left">Semester</th>
   
@@ -21,7 +20,6 @@
       <% @mata_kuliahs.each do |mata_kuliah| %>
         <tr class="group hover:bg-gray-100">
             <td class="p-3 border"><%= mata_kuliah.nama %></td>
-            <td class="p-3 border"><%= mata_kuliah.prodi.nama %></td>
             <td class="p-3 border"><%= mata_kuliah.sks %></td>
             <td class="p-3 border"><%= mata_kuliah.semester %></td>
   

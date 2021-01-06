@@ -5,6 +5,8 @@ class CreateJadwalMataKuliahs < ActiveRecord::Migration[6.0]
       t.references :dosen, null: false, foreign_key: true
       t.references :tahun_akademik, null: false, foreign_key: true
       t.references :kelas, null: false, foreign_key: true
+      t.integer :hari, limit: 1, null: false
+      t.time :waktu, null: false
 
       t.timestamps
     end

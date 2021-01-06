@@ -8,10 +8,12 @@
   <table class="table bg-white">
     <thead>
       <tr>
+          <th class="border p-2 text-left">Kelas</th>
+          <th class="border p-2 text-left">Tahun akademik</th>
           <th class="border p-2 text-left">Mata kuliah</th>
           <th class="border p-2 text-left">Dosen</th>
-          <th class="border p-2 text-left">Tahun akademik</th>
-          <th class="border p-2 text-left">Kelas</th>
+          <th class="border p-2 text-left">Hari</th>
+          <th class="border p-2 text-left">Waktu</th>
   
         <th>Aksi</th>
       </tr>
@@ -20,10 +22,12 @@
     <tbody>
       <% @jadwal_mata_kuliahs.each do |jadwal_mata_kuliah| %>
         <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= jadwal_mata_kuliah.kelas.nama %></td>
+            <td class="p-3 border"><%= jadwal_mata_kuliah.tahun_akademik.tahun %></td>
             <td class="p-3 border"><%= jadwal_mata_kuliah.mata_kuliah.nama %></td>
             <td class="p-3 border"><%= jadwal_mata_kuliah.dosen.nama %></td>
-            <td class="p-3 border"><%= jadwal_mata_kuliah.tahun_akademik.tahun %></td>
-            <td class="p-3 border"><%= jadwal_mata_kuliah.kelas.nama %></td>
+            <td class="p-3 border"><%= jadwal_mata_kuliah.hari %></td>
+            <td class="p-3 border"><%= l jadwal_mata_kuliah.waktu, format: "%R" %></td>
   
           <td class="border px-2">
             <%= link_to "Lihat", jadwal_mata_kuliah, class: "btn btn-primary" %>

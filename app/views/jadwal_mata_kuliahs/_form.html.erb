@@ -9,8 +9,11 @@
   <%= form.select :tahun_akademik_id, TahunAkademik.all.map { |x| [x.display_name, x.id] } %>
 
 
-  <%= form.select :kelas_id, Kelas.pluck(:nama, :id) %>
+<%= form.select :kelas_id, Kelas.pluck(:nama, :id) %>
 
+  <%= form.select :hari, I18n.t("date.day_names").map.with_index { |d, i| [d, i] } %>
+  <%= form.time_field :waktu %>
+  
   <div class="actions">
     <%= form.primary %>
   </div>

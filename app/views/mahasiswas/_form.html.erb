@@ -11,7 +11,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   <% end %>
   <%= form.text_field :nama, maxlength: 48, required: true %>
-  <%= form.select :prodi_id, prodi_options, required: true %>
+  <%= form.select :prodi_id, Prodi.pluck(:nama, :id), required: true %>
 
   <div class="actions">
     <%= form.primary %>

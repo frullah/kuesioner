@@ -6,23 +6,34 @@
   <h1 class="mb-4">Lihat Data Jadwal Mata Kuliah</h1>
 
   <p class="py-2">
-    <strong>Mata kuliah:</strong>
-    <%= @jadwal_mata_kuliah.mata_kuliah_id %>
-  </p>
-
-  <p class="py-2">
-    <strong>Dosen:</strong>
-    <%= @jadwal_mata_kuliah.dosen_id %>
-  </p>
-
-  <p class="py-2">
     <strong>Tahun akademik:</strong>
-    <%= @jadwal_mata_kuliah.tahun_akademik_id %>
+    <%= @jadwal_mata_kuliah.tahun_akademik.tahun %>
   </p>
 
   <p class="py-2">
     <strong>Kelas:</strong>
-    <%= @jadwal_mata_kuliah.kelas_id %>
+    <%= @jadwal_mata_kuliah.kelas.nama %>
+  </p>
+
+  <p class="py-2">
+    <strong>Mata kuliah:</strong>
+    <%= @jadwal_mata_kuliah.mata_kuliah.nama %>
+  </p>
+
+  <p class="py-2">
+    <strong>Dosen:</strong>
+    <%= @jadwal_mata_kuliah.dosen.nama %>
+  </p>
+
+  <p class="py-2">
+    <strong>Hari:</strong>
+    <%= @jadwal_mata_kuliah.hari %>
+  </p>
+
+
+  <p class="py-2">
+    <strong>Waktu:</strong>
+    <%= l @jadwal_mata_kuliah.waktu, format: "%R" %>
   </p>
 
   <div class="mt-4">

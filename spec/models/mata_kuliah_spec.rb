@@ -6,6 +6,10 @@ RSpec.describe MataKuliah, type: :model do
       it { is_expected.to validate_presence_of(:nama) }
     end
 
+    context "uniqueness" do
+      it { is_expected.to validate_uniqueness_of(:nama) }
+    end
+
     context "numbericality" do
       it {
         is_expected.to validate_numericality_of(:sks)
@@ -20,10 +24,6 @@ RSpec.describe MataKuliah, type: :model do
           .is_greater_than(0)
           .is_less_than(14)
       }
-    end
-
-    context "associations" do
-      it { is_expected.to belong_to(:prodi) }
     end
   end
 end

@@ -53,6 +53,11 @@ class JadwalMataKuliahsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def jadwal_mata_kuliah_params
-      params.require(:jadwal_mata_kuliah).permit(:mata_kuliah_id, :dosen_id, :tahun_akademik_id, :kelas_id)
+      params
+        .require(:jadwal_mata_kuliah)
+        .permit(:mata_kuliah_id, :dosen_id, :tahun_akademik_id, :kelas_id, :hari, :waktu)
+        .tap do |param|
+          param[:hari] = param[:hari].to_i
+        end
     end
 end
