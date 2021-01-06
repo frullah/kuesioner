@@ -1,12 +1,17 @@
 <%= bootstrap_form_with(model: mahasiswa, local: true, class: "mb-4") do |form| %>
 
-  <%= form.telephone_field :npm, maxlength: 14 %>
+  <%= form.telephone_field :npm, maxlength: 14, pattern: "[0-9]+" %>
   <%= form.fields_for :user do |f| %>
-    <%= f.text_field :username %>
+    <%= f.label :username do %>
+    asas
+    <% end %>
+    <%= f.text_field :username, skip_label: true do %>
+    asasa
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   <% end %>
-  <%= form.text_field :nama, maxlength: 48 %>
-  <%= form.select :prodi_id, prodi_options %>
+  <%= form.text_field :nama, maxlength: 48, required: true %>
+  <%= form.select :prodi_id, prodi_options, required: true %>
 
   <div class="actions">
     <%= form.primary %>
