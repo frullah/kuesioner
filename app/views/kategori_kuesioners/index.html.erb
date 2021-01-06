@@ -22,7 +22,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", kategori_kuesioner, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_kategori_kuesioner_path(kategori_kuesioner), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), kategori_kuesioner, method: :delete, data: { confirm: 'Hapus Kategori Kuesioner ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), kategori_kuesioner, method: :delete, data: { confirm: 'Hapus Kategori Kuesioner ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

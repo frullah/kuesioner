@@ -27,7 +27,7 @@
           <td class="border px-2">
             <%%= link_to "Lihat", <%= singular_table_name %>, class: "btn btn-primary" %>
             <%%= link_to octicon("pencil", height: 24), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-primary mx-0.5" %>
-            <%%= link_to octicon("trash"), <%= singular_table_name %>, method: :delete, data: { confirm: 'Hapus <%= singular_table_name.titleize %> ?' }, class: "btn btn-danger", remote: true %>
+            <%%= link_to octicon("trash"), <%= singular_table_name %>, method: :delete, data: { confirm: 'Hapus <%= singular_table_name.titleize %> ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <%% end %>

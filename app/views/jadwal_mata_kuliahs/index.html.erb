@@ -28,7 +28,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", jadwal_mata_kuliah, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_jadwal_mata_kuliah_path(jadwal_mata_kuliah), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), jadwal_mata_kuliah, method: :delete, data: { confirm: 'Hapus Jadwal Mata Kuliah ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), jadwal_mata_kuliah, method: :delete, data: { confirm: 'Hapus Jadwal Mata Kuliah ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

@@ -26,7 +26,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", dosen, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_dosen_path(dosen), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), dosen, method: :delete, data: { confirm: 'Hapus Dosen ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), dosen, method: :delete, data: { confirm: 'Hapus Dosen ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

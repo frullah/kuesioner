@@ -24,7 +24,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", tahun_akademik, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_tahun_akademik_path(tahun_akademik), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), tahun_akademik, method: :delete, data: { confirm: 'Hapus Tahun Akademik ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), tahun_akademik, method: :delete, data: { confirm: 'Hapus Tahun Akademik ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

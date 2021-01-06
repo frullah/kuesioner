@@ -21,7 +21,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", prodi, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_prodi_path(prodi), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), prodi, method: :delete, data: { confirm: 'Hapus Prodi ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), prodi, method: :delete, data: { confirm: 'Hapus Prodi ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

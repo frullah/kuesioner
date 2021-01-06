@@ -24,7 +24,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", item_kuesioner, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_item_kuesioner_path(item_kuesioner), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), item_kuesioner, method: :delete, data: { confirm: 'Hapus Item Kuesioner ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), item_kuesioner, method: :delete, data: { confirm: 'Hapus Item Kuesioner ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>

@@ -24,7 +24,7 @@
           <td class="border px-2">
             <%= link_to "Lihat", kelas, class: "btn btn-primary" %>
             <%= link_to octicon("pencil", height: 24), edit_kelas_path(kelas), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), kelas, method: :delete, data: { confirm: 'Hapus Kelas ?' }, class: "btn btn-danger", remote: true %>
+            <%= link_to octicon("trash"), kelas, method: :delete, data: { confirm: 'Hapus Kelas ?' }, class: "btn btn-danger" %>
           </td>
         </tr>
       <% end %>
