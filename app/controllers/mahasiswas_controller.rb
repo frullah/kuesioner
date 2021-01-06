@@ -58,7 +58,9 @@ class MahasiswasController < ApplicationController
       .require(:mahasiswa)
       .permit(:nama, :npm, :prodi_id, user_attributes: [:id, :email, :password])
       .tap do |param|
-        param[:user_attributes][:username] = param[:npm]
+        if param[:user_attributes][:username].blank?
+          param[:user_attributes][:username] = param[:npm]
+        end
         if param[:user_attributes][:password].blank?
           param[:user_attributes] = param[:user_attributes].except(:password)
         end

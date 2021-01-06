@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: jadwal_mata_kuliah, class: "mb-4") do |form| %>
+<%= bootstrap_form_with(model: jadwal_mata_kuliah, local: true, class: "mb-4") do |form| %>
 
   <%= form.select :mata_kuliah_id, MataKuliah.pluck(:nama, :id) %>
 

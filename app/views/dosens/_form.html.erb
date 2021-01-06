@@ -1,7 +1,11 @@
-<%= bootstrap_form_with(model: dosen, class: "mb-4") do |form| %>
+<%= bootstrap_form_with(model: dosen, local: true, class: "mb-4") do |form| %>
 
   <%= form.telephone_field :nidn %>
 
+  <%= form.fields_for :user do |f| %>
+    <%= f.text_field :username %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  <% end %>
 
   <%= form.text_field :nama %>
 

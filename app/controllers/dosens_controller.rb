@@ -13,7 +13,7 @@ class DosensController < ApplicationController
 
   # GET /dosens/new
   def new
-    @dosen = Dosen.new
+    @dosen = Dosen.new(user: User.new)
   end
 
   # GET /dosens/1/edit
@@ -47,13 +47,26 @@ class DosensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dosen
-      @dosen = Dosen.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dosen
+    @dosen = Dosen.find(params[:id])
+    @dosen.build_user if @dosen.user.nil?
+  end
 
     # Only allow a trusted parameter "white list" through.
     def dosen_params
-      params.require(:dosen).permit(:nidn, :nama, :pendidikan)
+      params
+        .require(:dosen)
+        .permit(:nidn, :nama, :pendidikan, user_attributes: {})
+        .tap do |param|
+          if param[:user_attributes][:username].blank?
+            param[:user_attributes][:username] = param[:nidn]
+          end
+
+          if param[:user_attributes][:password].blank?
+            param[:user_attributes] = param[:user_attributes].except(:password)
+          end
+        end
     end
 end

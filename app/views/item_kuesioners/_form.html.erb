@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: item_kuesioner, class: "mb-4") do |form| %>
+<%= bootstrap_form_with(model: item_kuesioner, local: true, class: "mb-4") do |form| %>
 
   <%= form.select :kategori_kuesioner_id, kategori_kuesioner_options %>
 

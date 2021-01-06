@@ -1,4 +1,4 @@
-<%%= bootstrap_form_with(model: <%= model_resource_name %>, class: "mb-4") do |form| %>
+<%%= bootstrap_form_with(model: <%= model_resource_name %>, local: true, class: "mb-4") do |form| %>
 <% attributes.each do |attribute| -%>
 
 <% if attribute.password_digest? -%>

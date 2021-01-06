@@ -1,10 +1,11 @@
-<%= bootstrap_form_with(model: mahasiswa, class: "mb-4") do |form| %>
+<%= bootstrap_form_with(model: mahasiswa, local: true, class: "mb-4") do |form| %>
 
-  <%= form.telephone_field :npm %>
+  <%= form.telephone_field :npm, maxlength: 14 %>
   <%= form.fields_for :user do |f| %>
+    <%= f.text_field :username %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   <% end %>
-  <%= form.text_field :nama %>
+  <%= form.text_field :nama, maxlength: 48 %>
   <%= form.select :prodi_id, prodi_options %>
 
   <div class="actions">

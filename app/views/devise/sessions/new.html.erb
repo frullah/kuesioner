@@ -1,7 +1,7 @@
 <div class="flex h-screen mx-auto items-center max-w-sm">
   <div class="w-full p-4 border rounded">
     <h2 class="mb-4">Masuk kuesioner</h2>
-    <%= bootstrap_form_with(model: resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= bootstrap_form_with(model: resource, local: true, as: resource_name, url: session_path(resource_name)) do |f| %>
       <% if alert %>
         <div class="alert alert-danger" role="alert">
           <%= alert %>
