@@ -59,7 +59,7 @@ module ApplicationHelper
       [
         {
           text: "Isi Kuesioner",
-          link: "/#isi-kuesioner"
+          link: kuesioner_isi_path
         }
       ]
     end

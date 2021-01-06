@@ -5,4 +5,9 @@ class Dosen < ApplicationRecord
 
   validates :nama, presence: true, length: {maximum: 48}
   validates :nidn, uniqueness: true, presence: true, length: {maximum: 14}, numericality: {only_integer: true}
+
+  before_create do
+    self.user ||= User.new
+    self.user.username = nidn
+  end
 end

@@ -1,0 +1,2 @@
+module KuesionerHelper
+end
