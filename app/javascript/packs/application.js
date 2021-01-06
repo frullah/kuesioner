@@ -4,7 +4,7 @@ import 'admin-lte/build/js/PushMenu'
 import BSN from 'bootstrap.native'
 
 require('@rails/ujs').start()
-require('turbolinks').start()
+// require('turbolinks').start()
 
 document.addEventListener('turbolinks:load', () => {
   $(document.body).Layout('fixLayoutHeight')

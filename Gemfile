@@ -11,7 +11,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", "~> 4.1"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem "turbolinks", "~> 5"
+# gem "turbolinks", "~> 5"
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -74,6 +74,6 @@ gem "rails-controller-testing", "~> 1.0"
 
 gem "i18n_generators", "~> 2.2"
 
-gem "turbolinks_render", "~> 0.9.20"
+# gem "turbolinks_render", "~> 0.9.20"
 
 gem "kaminari", "~> 1.2"
