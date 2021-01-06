@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   belongs_to :authenticatable, polymorphic: true
 
+  validates :username, uniqueness: true, presence: true
+
   def email_required?
     false
   end
