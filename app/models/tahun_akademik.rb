@@ -10,6 +10,6 @@ class TahunAkademik < ApplicationRecord
   end
 
   def display_name
-    "#{tahun} - #{semester}"
+    "#{tahun}/#{tahun+1} - #{semester}"
   end
 end

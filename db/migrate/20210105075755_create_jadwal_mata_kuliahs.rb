@@ -9,6 +9,14 @@ class CreateJadwalMataKuliahs < ActiveRecord::Migration[6.0]
       t.time :waktu, null: false
 
       t.timestamps
+
+
+      t.index [
+        :mata_kuliah_id, 
+        :dosen,
+        :tahun_akademik,
+        :kelas
+      ], unique: true, name: "index_jadwal_mata_kuliah"
     end
   end
 end

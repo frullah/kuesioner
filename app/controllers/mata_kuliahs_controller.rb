@@ -4,24 +4,29 @@ class MataKuliahsController < ApplicationController
 
   # GET /mata_kuliahs
   def index
-    @mata_kuliahs = MataKuliah.all
+    authorize MataKuliah
+    @mata_kuliahs = MataKuliah.page(params[:page])
   end
 
   # GET /mata_kuliahs/1
   def show
+    authorize MataKuliah
   end
 
   # GET /mata_kuliahs/new
   def new
+    authorize MataKuliah
     @mata_kuliah = MataKuliah.new
   end
 
   # GET /mata_kuliahs/1/edit
   def edit
+    authorize MataKuliah
   end
 
   # POST /mata_kuliahs
   def create
+    authorize MataKuliah
     @mata_kuliah = MataKuliah.new(mata_kuliah_params)
 
     if @mata_kuliah.save
@@ -33,6 +38,7 @@ class MataKuliahsController < ApplicationController
 
   # PATCH/PUT /mata_kuliahs/1
   def update
+    authorize MataKuliah
     if @mata_kuliah.update(mata_kuliah_params)
       redirect_to @mata_kuliah, notice: "Mata kuliah berhasil diubah."
     else
@@ -42,6 +48,7 @@ class MataKuliahsController < ApplicationController
 
   # DELETE /mata_kuliahs/1
   def destroy
+    authorize MataKuliah
     @mata_kuliah.destroy
     redirect_to mata_kuliahs_url, notice: "Mata kuliah berhasil dihapus."
   end

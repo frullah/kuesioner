@@ -4,8 +4,17 @@ class JadwalMataKuliah < ApplicationRecord
   belongs_to :tahun_akademik
   belongs_to :kelas
 
+  validates :mata_kuliah, uniqueness: {
+      scope: [
+      :dosen_id,
+      :tahun_akademik_id,
+      :kelas_id
+    ],
+    message: "Jadwal mata kuliah sudah ada"
+  }
   validates :hari, presence: true 
   validates :waktu, presence: true 
 
   enum hari: I18n.t("date.day_names").map(&:to_sym)
 end
+ 

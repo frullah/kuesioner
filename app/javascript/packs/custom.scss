@@ -14,14 +14,3 @@
 .form-group > label {
   @apply mb-1 inline-block;
 }
-
-.octicon {
-  @apply fill-current;
-}
-
-// hide sidebar-toggler when sidebar is not permanent adminLTE 
-@media screen and (min-width: 992px) {
-  #sidebar-toggler {
-    @apply hidden;
-  }
-}

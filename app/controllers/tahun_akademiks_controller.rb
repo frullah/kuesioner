@@ -3,24 +3,29 @@ class TahunAkademiksController < ApplicationController
 
   # GET /tahun_akademiks
   def index
-    @tahun_akademiks = TahunAkademik.all
+    authorize TahunAkademik
+    @tahun_akademiks = TahunAkademik.page(params[:page])
   end
 
   # GET /tahun_akademiks/1
   def show
+    authorize TahunAkademik
   end
 
   # GET /tahun_akademiks/new
   def new
+    authorize TahunAkademik
     @tahun_akademik = TahunAkademik.new
   end
 
   # GET /tahun_akademiks/1/edit
   def edit
+    authorize TahunAkademik
   end
 
   # POST /tahun_akademiks
   def create
+    authorize TahunAkademik
     @tahun_akademik = TahunAkademik.new(tahun_akademik_params)
 
     if @tahun_akademik.save
@@ -32,6 +37,7 @@ class TahunAkademiksController < ApplicationController
 
   # PATCH/PUT /tahun_akademiks/1
   def update
+    authorize TahunAkademik
     if @tahun_akademik.update(tahun_akademik_params)
       redirect_to @tahun_akademik, notice: 'Tahun akademik was successfully updated.'
     else
@@ -41,6 +47,7 @@ class TahunAkademiksController < ApplicationController
 
   # DELETE /tahun_akademiks/1
   def destroy
+    authorize TahunAkademik
     @tahun_akademik.destroy
     redirect_to tahun_akademiks_url, notice: 'Tahun akademik was successfully destroyed.'
   end

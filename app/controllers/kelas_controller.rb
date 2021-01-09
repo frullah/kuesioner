@@ -3,24 +3,29 @@ class KelasController < ApplicationController
 
   # GET /kelas
   def index
-    @kelas = Kelas.all
+    authorize Kelas
+    @kelas = Kelas.page(params[:page])
   end
 
   # GET /kelas/1
   def show
+    authorize Kelas
   end
 
   # GET /kelas/new
   def new
+    authorize Kelas
     @kelas = Kelas.new
   end
 
   # GET /kelas/1/edit
   def edit
+    authorize Kelas
   end
 
   # POST /kelas
   def create
+    authorize Kelas
     @kelas = Kelas.new(kelas_params)
 
     if @kelas.save
@@ -32,6 +37,7 @@ class KelasController < ApplicationController
 
   # PATCH/PUT /kelas/1
   def update
+    authorize Kelas
     if @kelas.update(kelas_params)
       redirect_to @kelas, notice: 'Kelas was successfully updated.'
     else
@@ -41,6 +47,7 @@ class KelasController < ApplicationController
 
   # DELETE /kelas/1
   def destroy
+    authorize Kelas
     @kelas.destroy
     redirect_to kelas_index_url, notice: 'Kelas was successfully destroyed.'
   end

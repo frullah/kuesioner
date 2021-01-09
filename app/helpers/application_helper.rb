@@ -8,44 +8,46 @@ module ApplicationHelper
     when "Admin"
       [
         {
-          text: "Data Mata Kuliah",
-          link: mata_kuliahs_path
-        },
-        {
-          text: "Data Prodi",
-          link: prodis_path
-        },
-        {
-          text: "Data Kelas",
-          link: kelas_index_path
-        },
-        {
-          text: "Data Tahun Akademik",
-          link: tahun_akademiks_path
-        },
-        {
-          text: "Data Mahasiswa",
-          link: mahasiswas_path
-        },
-        {
-          text: "Data Dosen",
-          link: dosens_path
-        },
-        {
-          text: "Data Jadwal Mata Kuliah",
-          link: jadwal_mata_kuliahs_path
-        },
-        {
-          text: "Data Kategori Kuesioner",
-          link: kategori_kuesioners_path
-        },
-        {
-          text: "Data Item Kuesioner",
-          link: item_kuesioners_path
-        },
-        {
-          text: "Laporan Hasil Kuesioner",
-          link: "/#laporan-hasil-kuesioner"
+          text: "Data",
+          items: [
+            {
+              text: "Prodi",
+              link: prodis_path
+            },
+            {
+              text: "Tahun Akademik",
+              link: tahun_akademiks_path
+            },
+            {
+              text: "Kelas",
+              link: kelas_index_path
+            },
+            {
+              text: "Mahasiswa",
+              link: mahasiswas_path
+            },
+            {
+              text: "Dosen",
+              link: dosens_path
+            },
+            {
+              text: "Mata Kuliah",
+              link: mata_kuliahs_path
+            },
+            {
+              text: "Jadwal Mata Kuliah",
+              link: jadwal_mata_kuliahs_path
+            },
+            {
+              text: "Kategori Kuesioner",
+              link: kategori_kuesioners_path
+            },
+            {
+              text: "Item Kuesioner",
+              link: item_kuesioners_path
+            }
+          
+          ]
         }
       ]
     when "Dosen"
@@ -78,6 +80,22 @@ module ApplicationHelper
   end
 
   def render_menu(menus)
-    menus.map { |menu| render_sidebar_menu(menu) }.join.html_safe
+    menus.map do |menu|
+      next render_sidebar_menu(menu) if menu[:items].blank?
+      
+      <<~HTML.html_safe
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <p>
+              #{menu[:text]}
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            #{render_menu menu[:items]}
+          </ul>
+        </li>
+      HTML
+    end.join.html_safe
   end
 end

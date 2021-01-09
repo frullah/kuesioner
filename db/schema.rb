@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
     t.time "waktu", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"mata_kuliah_id\", \"dosen\", \"tahun_akademik\", \"kelas\"", name: "index_jadwal_mata_kuliah", unique: true
     t.index ["dosen_id"], name: "index_jadwal_mata_kuliahs_on_dosen_id"
     t.index ["kelas_id"], name: "index_jadwal_mata_kuliahs_on_kelas_id"
     t.index ["mata_kuliah_id"], name: "index_jadwal_mata_kuliahs_on_mata_kuliah_id"

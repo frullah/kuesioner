@@ -3,24 +3,29 @@ class MahasiswasController < ApplicationController
 
   # GET /mahasiswas
   def index
-    @mahasiswas = Mahasiswa.all
+    authorize Mahasiswa
+    @mahasiswas = Mahasiswa.page(params[:page])
   end
 
   # GET /mahasiswas/1
   def show
+    authorize Mahasiswa
   end
 
   # GET /mahasiswas/new
   def new
+    authorize Mahasiswa
     @mahasiswa = Mahasiswa.new(user: User.new)
   end
 
   # GET /mahasiswas/1/edit
   def edit
+    authorize Mahasiswa
   end
 
   # POST /mahasiswas
   def create
+    authorize Mahasiswa
     @mahasiswa = Mahasiswa.new(mahasiswa_params)
 
     if @mahasiswa.save
@@ -32,6 +37,7 @@ class MahasiswasController < ApplicationController
 
   # PATCH/PUT /mahasiswas/1
   def update
+    authorize Mahasiswa
     if @mahasiswa.update(mahasiswa_params)
       redirect_to @mahasiswa, notice: "Mahasiswa berhasil diubah."
     else
@@ -41,6 +47,7 @@ class MahasiswasController < ApplicationController
 
   # DELETE /mahasiswas/1
   def destroy
+    authorize Mahasiswa
     @mahasiswa.destroy
     redirect_to mahasiswas_url, notice: "Mahasiswa berhasil dihapus."
   end
