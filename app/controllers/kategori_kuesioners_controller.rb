@@ -3,24 +3,29 @@ class KategoriKuesionersController < ApplicationController
 
   # GET /kategori_kuesioners
   def index
-    @kategori_kuesioners = KategoriKuesioner.all
+    authorize KategoriKuesioner
+    @kategori_kuesioners = KategoriKuesioner.page(params[:page])
   end
 
   # GET /kategori_kuesioners/1
   def show
+    authorize KategoriKuesioner
   end
 
   # GET /kategori_kuesioners/new
   def new
+    authorize KategoriKuesioner
     @kategori_kuesioner = KategoriKuesioner.new
   end
 
   # GET /kategori_kuesioners/1/edit
   def edit
+    authorize KategoriKuesioner
   end
 
   # POST /kategori_kuesioners
   def create
+    authorize KategoriKuesioner
     @kategori_kuesioner = KategoriKuesioner.new(kategori_kuesioner_params)
 
     if @kategori_kuesioner.save
@@ -32,6 +37,7 @@ class KategoriKuesionersController < ApplicationController
 
   # PATCH/PUT /kategori_kuesioners/1
   def update
+    authorize KategoriKuesioner
     if @kategori_kuesioner.update(kategori_kuesioner_params)
       redirect_to @kategori_kuesioner, notice: 'Kategori kuesioner was successfully updated.'
     else
@@ -41,6 +47,7 @@ class KategoriKuesionersController < ApplicationController
 
   # DELETE /kategori_kuesioners/1
   def destroy
+    authorize KategoriKuesioner
     @kategori_kuesioner.destroy
     redirect_to kategori_kuesioners_url, notice: 'Kategori kuesioner was successfully destroyed.'
   end

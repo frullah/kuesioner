@@ -8,7 +8,7 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 # Use Puma as the app server
-gem "puma", "~> 4.1"
+gem "puma", "~> 5"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem "turbolinks", "~> 5"
@@ -66,8 +66,6 @@ gem "rails-i18n", "~> 6.0"
 
 gem "devise-i18n", "~> 1.9"
 
-gem "octicons_helper", "~> 11.2"
-
 gem "simple_active_link_to", "~> 1.0"
 
 gem "rails-controller-testing", "~> 1.0"
@@ -77,3 +75,5 @@ gem "i18n_generators", "~> 2.2"
 # gem "turbolinks_render", "~> 0.9.20"
 
 gem "kaminari", "~> 1.2"
+
+gem "pundit", "~> 2.1"

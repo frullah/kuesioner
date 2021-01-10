@@ -4,24 +4,29 @@ class ProdisController < ApplicationController
 
   # GET /prodis
   def index
+    authorize Prodi
     @prodis = Prodi.page(params[:page])
   end
 
   # GET /prodis/1
   def show
+    authorize Prodi
   end
 
   # GET /prodis/new
   def new
+    authorize Prodi
     @prodi = Prodi.new
   end
 
   # GET /prodis/1/edit
   def edit
+    authorize Prodi
   end
 
   # POST /prodis
   def create
+    authorize Prodi
     @prodi = Prodi.new(prodi_params)
 
     if @prodi.save
@@ -33,6 +38,7 @@ class ProdisController < ApplicationController
 
   # PATCH/PUT /prodis/1
   def update
+    authorize Prodi
     if @prodi.update(prodi_params)
       redirect_to @prodi, notice: "Prodi berhasil diubah."
     else
@@ -42,6 +48,7 @@ class ProdisController < ApplicationController
 
   # DELETE /prodis/1
   def destroy
+    authorize Prodi
     @prodi.destroy
     redirect_to prodis_url, notice: "Prodi berhasil dihapus."
   end

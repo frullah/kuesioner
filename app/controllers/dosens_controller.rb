@@ -4,24 +4,29 @@ class DosensController < ApplicationController
 
   # GET /dosens
   def index
-    @dosens = Dosen.all
+    authorize Dosen
+    @dosens = Dosen.page(params[:page])
   end
 
   # GET /dosens/1
   def show
+    authorize Dosen
   end
 
   # GET /dosens/new
   def new
+    authorize Dosen
     @dosen = Dosen.new(user: User.new)
   end
 
   # GET /dosens/1/edit
   def edit
+    authorize Dosen
   end
 
   # POST /dosens
   def create
+    authorize Dosen
     @dosen = Dosen.new(dosen_params)
 
     if @dosen.save
@@ -33,6 +38,7 @@ class DosensController < ApplicationController
 
   # PATCH/PUT /dosens/1
   def update
+    authorize Dosen
     if @dosen.update(dosen_params)
       redirect_to @dosen, notice: 'Dosen berhasil diubah.'
     else
@@ -42,6 +48,7 @@ class DosensController < ApplicationController
 
   # DELETE /dosens/1
   def destroy
+    authorize Dosen
     @dosen.destroy
     redirect_to dosens_url, notice: 'Dosen berhasil dihapus.'
   end

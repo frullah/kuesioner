@@ -4,24 +4,29 @@ class ItemKuesionersController < ApplicationController
 
   # GET /item_kuesioners
   def index
-    @item_kuesioners = ItemKuesioner.all
+    authorize ItemKuesioner
+    @item_kuesioners = ItemKuesioner.page(params[:page])
   end
 
   # GET /item_kuesioners/1
   def show
+    authorize ItemKuesioner
   end
 
   # GET /item_kuesioners/new
   def new
+    authorize ItemKuesioner
     @item_kuesioner = ItemKuesioner.new
   end
 
   # GET /item_kuesioners/1/edit 
   def edit
+    authorize ItemKuesioner
   end
 
   # POST /item_kuesioners
   def create
+    authorize ItemKuesioner
     @item_kuesioner = ItemKuesioner.new(item_kuesioner_params)
 
     if @item_kuesioner.save
@@ -33,6 +38,7 @@ class ItemKuesionersController < ApplicationController
 
   # PATCH/PUT /item_kuesioners/1
   def update
+    authorize ItemKuesioner
     if @item_kuesioner.update(item_kuesioner_params)
       redirect_to @item_kuesioner, notice: 'Item kuesioner was successfully updated.'
     else
@@ -42,6 +48,7 @@ class ItemKuesionersController < ApplicationController
 
   # DELETE /item_kuesioners/1
   def destroy
+    authorize ItemKuesioner
     @item_kuesioner.destroy
     redirect_to item_kuesioners_url, notice: 'Item kuesioner was successfully destroyed.'
   end

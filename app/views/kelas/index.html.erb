@@ -1,17 +1,19 @@
-<div class="container">
+<div class="container max-w-full">
 <% if notice -%>
   <div class="alert alert-info" id="notice"><%= notice %></div>
 <% end %>
 
   <h1 class="mb-4">Data Kelas</h1>
 
-  <table class="table bg-white">
+  <%= link_to 'Tambah Kelas', new_kelas_path, class: "btn btn-primary mb-4" %>
+
+  <table class="table bg-white w-full">
     <thead>
       <tr>
           <th class="border p-2 text-left">Nama</th>
           <th class="border p-2 text-left">Prodi</th>
 
-        <th>Aksi</th>
+        <th class="border p-2 text-left w-1 whitespace-nowrap">Aksi</th>
       </tr>
     </thead>
 
@@ -21,17 +23,21 @@
             <td class="p-3 border"><%= kelas.nama %></td>
             <td class="p-3 border"><%= kelas.prodi.nama %></td>
   
-          <td class="border px-2">
-            <%= link_to "Lihat", kelas, class: "btn btn-primary" %>
-            <%= link_to octicon("pencil", height: 24), edit_kelas_path(kelas), class: "btn btn-primary mx-0.5" %>
-            <%= link_to octicon("trash"), kelas, method: :delete, data: { confirm: 'Hapus Kelas ?' }, class: "btn btn-danger" %>
+          <td class="border px-2 w-1 whitespace-nowrap">
+            <%= link_to kelas, class: "btn btn-primary" do %>
+              <i class="fas fa-eye"></i>
+            <% end %>
+            <%= link_to edit_kelas_path(kelas), class: "btn btn-primary mx-0.5" do %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to kelas, method: :delete, data: { confirm: 'Hapus Kelas ?' }, class: "btn btn-danger" do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <br>
-
-  <%= link_to 'Buat Kelas', new_kelas_path, class: "btn btn-primary" %>
+  <%= paginate @kelas, class: "mt-2" %>
 </div>

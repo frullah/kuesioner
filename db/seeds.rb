@@ -7,24 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ApplicationRecord.transaction do
-  User.where(username: "admin").first_or_create! do |user|
+  prodi_ti = Prodi.find_or_create_by!(nama: "Teknik Informatika")
+  kelas_ti_malam = Kelas.find_or_create_by!(nama: "TI.1.M", prodi: prodi_ti)
+  
+  admin1 = User.where(username: "admin").first_or_create! do |user|
     user.email = "admin@domain.tld"
     user.password = "changeme123"
     user.authenticatable = Admin.find_or_create_by!(nama: "administrator")
   end
 
-  prodi_ti = Prodi.find_or_create_by!(nama: "Teknik Informatika")
-
-  User.where(username: "1101171027").first_or_create! do |user|
+  mahasiswa1 = User.where(username: "1101171027").first_or_create! do |user|
     user.password =  "mahasiswa"
     user.authenticatable =  Mahasiswa.find_or_create_by!(
       npm: "1101171027",
       nama: "Fajarullah",
-      prodi: prodi_ti
+      prodi: prodi_ti,
+      kelas: kelas_ti_malam
     )
   end
 
-  User.where(username: "1234567890").first_or_create! do |user|
+  dosen1 = User.where(username: "1234567890").first_or_create! do |user|
     user.password =  "dosen1"
     user.authenticatable =  Dosen.find_or_create_by!(
       nidn: "1234567890",
@@ -32,19 +34,23 @@ ApplicationRecord.transaction do
       pendidikan: "S2"
     )
   end
-  
+
   mk_teknik_simulasi = MataKuliah.find_or_create_by!(
     nama: "Teknik Simulasi",
     sks: 2,
     semester: 7
   )
 
+  mk_machine_learning = MataKuliah.find_or_create_by!(
+    nama: "Machine Learning",
+    sks: 3,
+    semester: 6
+  )
+
   tahun_akademik = TahunAkademik.find_or_create_by!(
     tahun: 2020,
     ganjil: true
   )
-
-  kelas_ti_malam = Kelas.find_or_create_by!(nama: "TI.1.M", prodi: prodi_ti)
 
   kuesioner = [
     {
@@ -57,16 +63,15 @@ ApplicationRecord.transaction do
     {
       kategori: "Pelaksanaan",
       pertanyaan: [
-        "Dosen tepat waktu dalam mengawali danmengakhiri perkuliahan",
-        "Dosen menggunakan media/alat pembelajaran dalam setiappertemuan",
+        "Dosen tepat waktu dalam mengawali dan mengakhiri perkuliahan",
+        "Dosen menggunakan media/alat pembelajaran dalam setiap pertemuan",
         "Dosen menguasi materi kuliah pada saat mengajar",
         "Dosen menggunakan metoda perkuliahan yang bervariasi",
         "Dosen selalu membuka sesi tanya jawab",
-        "Dosen memberikan pertemuan tambahan jika materikurang",
+        "Dosen memberikan pertemuan tambahan jika materi kurang",
         "Dosen mampu memotivasi siswa agar aktif dalam proses belajar mengajar",
         "Penampilan dosen dalam berpakaian rapi, bersih dan serasi",
         "Penggunaan bahasa dalam pelaksanaan perkuliahan : jelas, sopan dansantun ",
-        "Dosen bersedia melakukan konsultasi bila mahasiswa kesulitan dalam perkuliahan",
         "Dosen menerima saran dan kritik dari mahasiswa "
       ]
     },
@@ -74,7 +79,7 @@ ApplicationRecord.transaction do
       kategori: "Penilaian Hasil Belajar Mahasiswa",
       pertanyaan: [
         "Soal ujian sesuai dengan materi kuliah yang disampaikan",
-        "Dosen obyektifdantransparandalam memberikan nilai kepada mahasiswa",
+        "Dosen obyektif dan transparan dalam memberikan nilai kepada mahasiswa",
         "Jika ada keberatan atas nilai mahasiswa, dosen menerima keberatan tersebut"
       ]
     }
@@ -89,4 +94,16 @@ ApplicationRecord.transaction do
       )
     end
   end
+
+  JadwalMataKuliah
+    .where(
+      mata_kuliah_id: MataKuliah.find_by!(nama: "Teknik Simulasi"),
+      dosen_id: Dosen.first,
+      tahun_akademik_id: TahunAkademik.find_by!(tahun: 2020, ganjil: true),
+      kelas_id: Kelas.find_by(nama: "TI.1.M")
+    )
+    .first_or_create! do |jadwal|
+      jadwal.hari = "Senin"
+      jadwal.waktu = Time.new.change({ hour: 18, min: 30 })
+    end
 end

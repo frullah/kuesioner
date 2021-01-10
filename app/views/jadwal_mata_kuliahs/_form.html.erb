@@ -1,15 +1,16 @@
 <%= bootstrap_form_with(model: jadwal_mata_kuliah, local: true, class: "mb-4") do |form| %>
 
+  <% if form.object.errors.messages[:mata_kuliah].present? %>
+    <div class="alert alert-danger" id="notice">
+      <%= form.object.errors.messages[:mata_kuliah].join(', ') %>
+    </div>
+  <% end %>
+
+  <%= form.select :kelas_id, Kelas.pluck(:nama, :id) %>
+  <%= form.select :tahun_akademik_id, TahunAkademik.all.map { |x| [x.display_name, x.id] } %>
   <%= form.select :mata_kuliah_id, MataKuliah.pluck(:nama, :id) %>
 
-
   <%= form.select :dosen_id, Dosen.pluck(:nama, :id) %>
-
-
-  <%= form.select :tahun_akademik_id, TahunAkademik.all.map { |x| [x.display_name, x.id] } %>
-
-
-<%= form.select :kelas_id, Kelas.pluck(:nama, :id) %>
 
   <%= form.select :hari, I18n.t("date.day_names").map.with_index { |d, i| [d, i] } %>
   <%= form.time_field :waktu %>

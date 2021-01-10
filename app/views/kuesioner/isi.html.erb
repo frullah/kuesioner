@@ -1,0 +1,47 @@
+<%= javascript_pack_tag "kuesioner/isi" %>
+
+<div class="container max-w-screen-sm mx-auto">
+  <h2 class="mb-4">Kuesioner</h2>
+
+  <%= bootstrap_form_tag(method: :post, remote: true, html:{id: "form"}) do |form| %>
+    <% n = 1 %>
+
+    <input type="hidden" name="dosen_id" value="<%= params[:dosen_id] %>">
+
+    <ol class="list-inside" style="list-style-type: upper-alpha">
+
+      <% @list_kategori_kuesioner.each_with_index do |kategori_kuesioner, i| %>
+        <li class="mb-4">
+          <h3 class="inline-block mb-1"><%= kategori_kuesioner.nama %></h3>
+          <ol class="list-inside list-decimal mt-1" start="<%= n %>">
+            <% kategori_kuesioner.item_kuesioner.each do |item_kuesioner| %>
+              <li class="mb-2">
+                <%= item_kuesioner.pertanyaan %>
+                <div class="flex mt-2 ml-3">
+                  <% 4.downto(1) do |i| %>
+                    <div class="form-check px-2.5">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="kuesioner[<%= item_kuesioner.id %>]"
+                        id="kuesioner-<%= item_kuesioner.id %>-<%= i %>"
+                        value="<%= i %>">
+                      <label for="kuesioner-<%= item_kuesioner.id %>-<%= i %>">
+                        <%= teks_nilai(i) %>
+                      </label>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ol>
+        </li>
+        
+        <% n += kategori_kuesioner.item_kuesioner.length %>
+      <% end %>
+
+    </ol>
+
+    <%= form.primary "Submit" %>
+  <% end %>
+</div>

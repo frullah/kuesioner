@@ -1,26 +1,32 @@
 class JadwalMataKuliahsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_jadwal_mata_kuliah, only: [:show, :edit, :update, :destroy]
 
   # GET /jadwal_mata_kuliahs
   def index
-    @jadwal_mata_kuliahs = JadwalMataKuliah.all
+    authorize JadwalMataKuliah
+    @jadwal_mata_kuliahs = JadwalMataKuliah.page(params[:page])
   end
 
   # GET /jadwal_mata_kuliahs/1
   def show
+    authorize JadwalMataKuliah
   end
 
   # GET /jadwal_mata_kuliahs/new
   def new
+    authorize JadwalMataKuliah
     @jadwal_mata_kuliah = JadwalMataKuliah.new
   end
 
   # GET /jadwal_mata_kuliahs/1/edit
   def edit
+    authorize JadwalMataKuliah
   end
 
   # POST /jadwal_mata_kuliahs
   def create
+    authorize JadwalMataKuliah
     @jadwal_mata_kuliah = JadwalMataKuliah.new(jadwal_mata_kuliah_params)
 
     if @jadwal_mata_kuliah.save
@@ -32,6 +38,7 @@ class JadwalMataKuliahsController < ApplicationController
 
   # PATCH/PUT /jadwal_mata_kuliahs/1
   def update
+    authorize JadwalMataKuliah
     if @jadwal_mata_kuliah.update(jadwal_mata_kuliah_params)
       redirect_to @jadwal_mata_kuliah, notice: 'Jadwal mata kuliah was successfully updated.'
     else
@@ -41,6 +48,7 @@ class JadwalMataKuliahsController < ApplicationController
 
   # DELETE /jadwal_mata_kuliahs/1
   def destroy
+    authorize JadwalMataKuliah
     @jadwal_mata_kuliah.destroy
     redirect_to jadwal_mata_kuliahs_url, notice: 'Jadwal mata kuliah was successfully destroyed.'
   end
