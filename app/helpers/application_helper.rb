@@ -53,8 +53,8 @@ module ApplicationHelper
     when "Dosen"
       [
         {
-          text: "Laporan Hasil Kuesioner",
-          link: "/#laporan-hasil-kuesioner"
+          text: "Hasil Kuesioner",
+          link: kuesioner_hasil_path
         }
       ]
     else

@@ -62,4 +62,14 @@ class KuesionerController < ApplicationController
 
     render json: {success: true, redirect_url: kuesioner_path }
   end
+
+  def tampilkan_hasil
+    authorize self
+
+    @list_respon_kuesioner = ResponKuesioner
+      .joins(item_kuesioner: :kategori_kuesioner)
+      .where(dosen_id: current_user.authenticatable_id)
+      .group("kategori_kuesioners.nama", "item_kuesioners.pertanyaan")
+      .average(:nilai)
+  end
 end

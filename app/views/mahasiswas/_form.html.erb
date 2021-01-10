@@ -2,16 +2,12 @@
 
   <%= form.telephone_field :npm, maxlength: 14, pattern: "[0-9]+" %>
   <%= form.fields_for :user do |f| %>
-    <%= f.label :username do %>
-    asas
-    <% end %>
-    <%= f.text_field :username, skip_label: true do %>
-    asasa
-    <% end %>
+    <%= f.text_field :username %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   <% end %>
   <%= form.text_field :nama, maxlength: 48, required: true %>
   <%= form.select :prodi_id, Prodi.pluck(:nama, :id), required: true %>
+  <%= form.select :kelas_id, Kelas.pluck(:nama, :id), required: true %>
 
   <div class="actions">
     <%= form.primary %>

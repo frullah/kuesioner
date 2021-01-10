@@ -13,6 +13,7 @@
         <th class="border p-2 text-left">NPM</th>
         <th class="border p-2 text-left">Nama</th>
         <th class="border p-2 text-left">Prodi</th>
+        <th class="border p-2 text-left">Kelas</th>
   
         <th class="border p-2 text-left w-1 whitespace-nowrap">Aksi</th>
       </tr>
@@ -24,6 +25,7 @@
             <td class="p-3 border"><%= mahasiswa.npm %></td>
             <td class="p-3 border"><%= mahasiswa.nama %></td>
             <td class="p-3 border"><%= mahasiswa.prodi.nama %></td>
+            <td class="p-3 border"><%= mahasiswa.kelas.nama %></td>
   
           <td class="border px-2 w-1 whitespace-nowrap">
             <%= link_to mahasiswa, class: "btn btn-primary" do %>

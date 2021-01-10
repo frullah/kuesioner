@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   get 'kuesioner/isi', to: "kuesioner#isi"
   post 'kuesioner/isi', to: "kuesioner#simpan"
 
+  get 'kuesioner/hasil', to: "kuesioner#tampilkan_hasil"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

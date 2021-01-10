@@ -10,6 +10,10 @@ class KuesionerControllerPolicy < ApplicationPolicy
   def simpan?
     user.authenticatable_type == "Mahasiswa"
   end
+
+  def tampilkan_hasil?
+    user.authenticatable_type == "Dosen"
+  end
   
   class Scope < Scope
     def resolve

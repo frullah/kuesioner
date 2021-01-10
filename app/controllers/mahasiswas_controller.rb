@@ -63,7 +63,7 @@ class MahasiswasController < ApplicationController
   def mahasiswa_params
     params
       .require(:mahasiswa)
-      .permit(:nama, :npm, :prodi_id, user_attributes: [:id, :username, :password])
+      .permit(:nama, :npm, :prodi_id, :kelas_id, user_attributes: [:id, :username, :password])
       .tap do |param|
         if param[:user_attributes][:username].blank?
           param[:user_attributes][:username] = param[:npm]

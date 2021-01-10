@@ -20,6 +20,11 @@
     <%= @mahasiswa.prodi.nama %>
   </p>
 
+  <p class="py-2">
+    <strong>Kelas:</strong>
+    <%= @mahasiswa.kelas.nama %>
+  </p>
+
   <div class="mt-4">
     <%= link_to mahasiswas_path, class: "btn btn-primary" do %>
       <i class="fas fa-arrow-left"></i> Kembali
