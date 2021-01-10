@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ApplicationRecord.transaction do
+  prodi_ti = Prodi.find_or_create_by!(nama: "Teknik Informatika")
+  kelas_ti_malam = Kelas.find_or_create_by!(nama: "TI.1.M", prodi: prodi_ti)
+  
   admin1 = User.where(username: "admin").first_or_create! do |user|
     user.email = "admin@domain.tld"
     user.password = "changeme123"
@@ -18,7 +21,8 @@ ApplicationRecord.transaction do
     user.authenticatable =  Mahasiswa.find_or_create_by!(
       npm: "1101171027",
       nama: "Fajarullah",
-      prodi: prodi_ti
+      prodi: prodi_ti,
+      kelas: kelas_ti_malam
     )
   end
 
@@ -30,8 +34,6 @@ ApplicationRecord.transaction do
       pendidikan: "S2"
     )
   end
-
-  prodi_ti = Prodi.find_or_create_by!(nama: "Teknik Informatika")
 
   mk_teknik_simulasi = MataKuliah.find_or_create_by!(
     nama: "Teknik Simulasi",
@@ -49,8 +51,6 @@ ApplicationRecord.transaction do
     tahun: 2020,
     ganjil: true
   )
-
-  kelas_ti_malam = Kelas.find_or_create_by!(nama: "TI.1.M", prodi: prodi_ti)
 
   kuesioner = [
     {
@@ -80,7 +80,7 @@ ApplicationRecord.transaction do
       kategori: "Penilaian Hasil Belajar Mahasiswa",
       pertanyaan: [
         "Soal ujian sesuai dengan materi kuliah yang disampaikan",
-        "Dosen obyektifdantransparandalam memberikan nilai kepada mahasiswa",
+        "Dosen obyektif dan transparan dalam memberikan nilai kepada mahasiswa",
         "Jika ada keberatan atas nilai mahasiswa, dosen menerima keberatan tersebut"
       ]
     }
