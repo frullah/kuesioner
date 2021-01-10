@@ -63,16 +63,15 @@ ApplicationRecord.transaction do
     {
       kategori: "Pelaksanaan",
       pertanyaan: [
-        "Dosen tepat waktu dalam mengawali danmengakhiri perkuliahan",
-        "Dosen menggunakan media/alat pembelajaran dalam setiappertemuan",
+        "Dosen tepat waktu dalam mengawali dan mengakhiri perkuliahan",
+        "Dosen menggunakan media/alat pembelajaran dalam setiap pertemuan",
         "Dosen menguasi materi kuliah pada saat mengajar",
         "Dosen menggunakan metoda perkuliahan yang bervariasi",
         "Dosen selalu membuka sesi tanya jawab",
-        "Dosen memberikan pertemuan tambahan jika materikurang",
+        "Dosen memberikan pertemuan tambahan jika materi kurang",
         "Dosen mampu memotivasi siswa agar aktif dalam proses belajar mengajar",
         "Penampilan dosen dalam berpakaian rapi, bersih dan serasi",
         "Penggunaan bahasa dalam pelaksanaan perkuliahan : jelas, sopan dansantun ",
-        "Dosen bersedia melakukan konsultasi bila mahasiswa kesulitan dalam perkuliahan",
         "Dosen menerima saran dan kritik dari mahasiswa "
       ]
     },

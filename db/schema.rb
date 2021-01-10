@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_075755) do
+ActiveRecord::Schema.define(version: 2021_01_10_045455) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nama", limit: 64
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
     t.integer "prodi_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "kelas_id", null: false
+    t.index ["kelas_id"], name: "index_mahasiswas_on_kelas_id"
     t.index ["npm"], name: "index_mahasiswas_on_npm", unique: true
     t.index ["prodi_id"], name: "index_mahasiswas_on_prodi_id"
   end
@@ -90,6 +92,19 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nama"], name: "index_prodis_on_nama", unique: true
+  end
+
+  create_table "respon_kuesioners", force: :cascade do |t|
+    t.integer "mahasiswa_id", null: false
+    t.integer "dosen_id", null: false
+    t.integer "item_kuesioner_id", null: false
+    t.integer "nilai", limit: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dosen_id"], name: "index_respon_kuesioners_on_dosen_id"
+    t.index ["item_kuesioner_id"], name: "index_respon_kuesioners_on_item_kuesioner_id"
+    t.index ["mahasiswa_id", "dosen_id", "item_kuesioner_id"], name: "respon_kuesioner_idx", unique: true
+    t.index ["mahasiswa_id"], name: "index_respon_kuesioners_on_mahasiswa_id"
   end
 
   create_table "tahun_akademiks", force: :cascade do |t|
@@ -122,5 +137,9 @@ ActiveRecord::Schema.define(version: 2021_01_05_075755) do
   add_foreign_key "jadwal_mata_kuliahs", "mata_kuliahs"
   add_foreign_key "jadwal_mata_kuliahs", "tahun_akademiks"
   add_foreign_key "kelas", "prodis"
+  add_foreign_key "mahasiswas", "kelas"
   add_foreign_key "mahasiswas", "prodis"
+  add_foreign_key "respon_kuesioners", "dosens"
+  add_foreign_key "respon_kuesioners", "item_kuesioners"
+  add_foreign_key "respon_kuesioners", "mahasiswas"
 end

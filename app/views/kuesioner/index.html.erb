@@ -1,0 +1,37 @@
+<div class="container max-w-full">
+  <h1 class="mb-4">Isi Kuesioner</h1>
+  <table class="table bg-white w-full">
+    <thead>
+      <tr>
+        <th class="border p-2 text-left">Mata Kuliah</th>
+        <th class="border p-2 text-left">Dosen</th>
+        <th class="border p-2 text-left">Status</th>
+        <th class="border p-2">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @list_jadwal.each do |jadwal| %>
+        <tr class="group hover:bg-gray-100">
+          <td class="p-3 border"><%= jadwal["mata_kuliah"] %></td>
+          <td class="p-3 border"><%= jadwal["dosen"] %></td>
+          <td class="p-3 border w-1 whitespace-nowrap">
+            <% if jadwal["status"] == 1 %>
+              Sudah diisi
+            <% else %>
+              Belum diisi
+            <% end %>
+          </td>
+          <td class="px-1 border w-1 whitespace-nowrap">
+            <% if jadwal["status"] == 1 %>
+              -
+            <% else %>
+              <%= link_to kuesioner_isi_path(dosen_id: jadwal["dosen_id"]), class: "btn btn-primary" do %>
+                <i class="fas fa-pencil-alt"></i>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

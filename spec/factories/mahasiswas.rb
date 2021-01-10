@@ -3,6 +3,7 @@ FactoryBot.define do
     sequence(:npm) { |i| i.to_s.rjust(14, "0") }
     sequence(:nama) { |i| "mahasiswa#{i}" }
     prodi
+    kelas
 
     after(:create) do |mahasiswa|
       create(:user, authenticatable: mahasiswa)

@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
   const appToast = document.getElementById('app-toast')
   if (appToast) {
     new BSN.Toast(appToast, {delay: 5000}).show()
