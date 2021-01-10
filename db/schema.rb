@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_045455) do
+ActiveRecord::Schema.define(version: 2021_01_10_150946) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nama", limit: 64
@@ -141,5 +141,5 @@ ActiveRecord::Schema.define(version: 2021_01_10_045455) do
   add_foreign_key "mahasiswas", "prodis"
   add_foreign_key "respon_kuesioners", "dosens"
   add_foreign_key "respon_kuesioners", "item_kuesioners"
-  add_foreign_key "respon_kuesioners", "mahasiswas"
+  add_foreign_key "respon_kuesioners", "mahasiswas", on_delete: :cascade
 end
