@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('ajax:success', async ({detail: [data]}) => {
     if (data.success) {
       await swal.fire({
-        text: 'Berhasil menyimpan kuesioner',
+        text: 'Berhasil mengirimkan kuesioner',
         icon: 'success'
       })
-      
+
       window.location.href = data.redirect_url
     }
   })

@@ -5,6 +5,7 @@
       <tr>
         <th class="border p-2 text-left">Mata Kuliah</th>
         <th class="border p-2 text-left">Dosen</th>
+        <th class="border p-2 text-left">Hari</th>
         <th class="border p-2 text-left">Status</th>
         <th class="border p-2">Aksi</th>
       </tr>
@@ -14,6 +15,7 @@
         <tr class="group hover:bg-gray-100">
           <td class="p-3 border"><%= jadwal["mata_kuliah"] %></td>
           <td class="p-3 border"><%= jadwal["dosen"] %></td>
+          <td class="p-3 border"><%= I18n.t("date.day_names")[jadwal["hari"]] %></td>
           <td class="p-3 border w-1 whitespace-nowrap">
             <% if jadwal["status"] == 1 %>
               Sudah diisi
@@ -25,7 +27,7 @@
             <% if jadwal["status"] == 1 %>
               -
             <% else %>
-              <%= link_to kuesioner_isi_path(dosen_id: jadwal["dosen_id"]), class: "btn btn-primary" do %>
+              <%= link_to kuesioner_isi_path(jadwal_mata_kuliah_id: jadwal["dosen_id"]), class: "btn btn-primary" do %>
                 <i class="fas fa-pencil-alt"></i>
               <% end %>
             <% end %>

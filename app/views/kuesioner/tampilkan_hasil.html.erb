@@ -1,41 +1,45 @@
 <div class="container max-w-full">
   <h2 class="mb-4">Hasil Kuesioner</h2>
 
-  <table class="table w-full bg-white">
-    <thead>
-      <th class="p-2 border text-left">Pertanyaan</th>
-      <th class="p-2 border text-left w-1 whitespace-nowrap">Nilai</th>
-    </thead>
+  <% if @list_respon_kuesioner.blank? %>
+    <p>Belum ada respon kuesioner</p>
+  <% else %>
+    <table class="table w-full bg-white">
+      <thead>
+        <th class="p-2 border text-left">Pertanyaan</th>
+        <th class="p-2 border text-left w-1 whitespace-nowrap">Nilai</th>
+      </thead>
 
-    <tbody>
-      <%
-        kategori_sebelumnya = nil
-        total_rata_rata = 0
-        sub_rata_rata_i = 1
-        sub_rata_rata = 0
-      %>
-      <% @list_respon_kuesioner.each_with_index do |((kategori, pertanyaan), rata_rata), i| %>
-        <% total_rata_rata += rata_rata %>
-        <% if kategori != kategori_sebelumnya %>
-          <tr>
-            <td class="p-2 border bg-gray-100" colspan="2"><%= kategori %></td>
+      <tbody>
+        <%
+          kategori_sebelumnya = nil
+          total_rata_rata = 0
+          sub_rata_rata_i = 1
+          sub_rata_rata = 0
+        %>
+        <% @list_respon_kuesioner.each_with_index do |((kategori, pertanyaan), rata_rata), i| %>
+          <% total_rata_rata += rata_rata %>
+          <% if kategori != kategori_sebelumnya %>
+            <tr>
+              <td class="p-2 border bg-gray-100" colspan="2"><%= kategori %></td>
+            </tr>
+            <%
+              kategori_sebelumnya = kategori
+              sub_rata_rata_i = 1
+              sub_rata_rata = 0
+            %>
+          <% else %>
+            <% 
+              sub_rata_rata += rata_rata
+              sub_rata_rata_i += 1
+            %>
+          <% end %>
+          <tr class="group hover:bg-gray-100">
+            <td class="p-3 border"><%= pertanyaan %></td>
+            <td class="p-3 border"><%= rata_rata %></td>
           </tr>
-          <%
-            kategori_sebelumnya = kategori
-            sub_rata_rata_i = 1
-            sub_rata_rata = 0
-          %>
-        <% else %>
-          <% 
-            sub_rata_rata += rata_rata
-            sub_rata_rata_i += 1
-          %>
         <% end %>
-        <tr class="group hover:bg-gray-100">
-          <td class="p-3 border"><%= pertanyaan %></td>
-          <td class="p-3 border"><%= rata_rata %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
 </div>

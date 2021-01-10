@@ -6,30 +6,39 @@ class KuesionerController < ApplicationController
 
     sql = <<~SQL
       select
-        jmk.id as "dosen_id",
+        jmk.dosen_id as "dosen_id",
         d.nama as "dosen",
         mk.nama as "mata_kuliah",
-        count(rk.id) > 0 as "status"
+        count(rk.id) = (select count(*) from item_kuesioners) as "status",
+        jmk.hari as "hari"
       from
         jadwal_mata_kuliahs jmk
+      inner join mahasiswas m on
+        m.id = :mahasiswa_id
+        and m.kelas_id = jmk.kelas_id
       inner join mata_kuliahs mk on
         mk.id = jmk.mata_kuliah_id
       inner join dosens d on
-        d.id = jmk.id
+        d.id = jmk.dosen_id
       left join respon_kuesioners rk on
-        rk.mahasiswa_id = :mahasiswa_id
-        and rk.dosen_id = jmk.dosen_id
+        rk.mahasiswa_id = m.id
+        and rk.jadwal_mata_kuliah_id = jmk.id
+      group by
+        m.id,
+        jmk.dosen_id,
+        d.nama,
+        mk.nama
     SQL
     sql = ApplicationRecord.sanitize_sql_array([
       sql,
       mahasiswa_id: current_user.authenticatable_id
     ]) 
-    @list_jadwal = ApplicationRecord.connection.execute(sql).to_a
+    @list_jadwal = ApplicationRecord.connection.execute(sql)
   end
 
   def isi
     authorize self
-    return redirect_to(kuesioner_path) if params[:dosen_id].blank?
+    return redirect_to(kuesioner_path) if params[:jadwal_mata_kuliah_id].blank?
 
     @list_kategori_kuesioner = KategoriKuesioner
       .all
@@ -40,10 +49,10 @@ class KuesionerController < ApplicationController
   def simpan
     authorize self
 
-    dosen_id = params.require(:dosen_id)
-    respon_kuesioner = params.require(:kuesioner)
+    jadwal_mata_kuliah_id = params.require(:jadwal_mata_kuliah_id)
+    respon_kuesioner = params[:kuesioner]
 
-    unless (ItemKuesioner.pluck(:id) - respon_kuesioner.keys.map(&:to_i)).blank?
+    if respon_kuesioner.blank? || !(ItemKuesioner.pluck(:id) - respon_kuesioner.keys.map(&:to_i)).blank?
       render status: :bad_request, json: {error: "Lengkapi kuesioner terlebih dahulu"}
       return
     end
@@ -53,7 +62,7 @@ class KuesionerController < ApplicationController
         nilai = nilai.to_i
         ResponKuesioner.create(
           mahasiswa: current_user.authenticatable,
-          dosen_id: dosen_id,
+          jadwal_mata_kuliah_id: jadwal_mata_kuliah_id,
           item_kuesioner_id: item_kuesioner_id,
           nilai: nilai > 4 ? 4 : nilai < 0 ? 0 : nilai
         )
@@ -67,8 +76,8 @@ class KuesionerController < ApplicationController
     authorize self
 
     @list_respon_kuesioner = ResponKuesioner
-      .joins(item_kuesioner: :kategori_kuesioner)
-      .where(dosen_id: current_user.authenticatable_id)
+      .joins([:jadwal_mata_kuliah, item_kuesioner: :kategori_kuesioner])
+      .where(jadwal_mata_kuliahs: {dosen_id: current_user.authenticatable_id})
       .group("kategori_kuesioners.nama", "item_kuesioners.pertanyaan")
       .average(:nilai)
   end

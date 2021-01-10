@@ -96,14 +96,14 @@ ActiveRecord::Schema.define(version: 2021_01_10_150946) do
 
   create_table "respon_kuesioners", force: :cascade do |t|
     t.integer "mahasiswa_id", null: false
-    t.integer "dosen_id", null: false
+    t.integer "jadwal_mata_kuliah_id", null: false
     t.integer "item_kuesioner_id", null: false
     t.integer "nilai", limit: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["dosen_id"], name: "index_respon_kuesioners_on_dosen_id"
+    t.index "\"mahasiswa_id\", \"jadwal_mata_kuliah\", \"item_kuesioner_id\"", name: "respon_kuesioner_idx", unique: true
     t.index ["item_kuesioner_id"], name: "index_respon_kuesioners_on_item_kuesioner_id"
-    t.index ["mahasiswa_id", "dosen_id", "item_kuesioner_id"], name: "respon_kuesioner_idx", unique: true
+    t.index ["jadwal_mata_kuliah_id"], name: "index_respon_kuesioners_on_jadwal_mata_kuliah_id"
     t.index ["mahasiswa_id"], name: "index_respon_kuesioners_on_mahasiswa_id"
   end
 
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2021_01_10_150946) do
   add_foreign_key "kelas", "prodis"
   add_foreign_key "mahasiswas", "kelas"
   add_foreign_key "mahasiswas", "prodis"
-  add_foreign_key "respon_kuesioners", "dosens"
   add_foreign_key "respon_kuesioners", "item_kuesioners"
+  add_foreign_key "respon_kuesioners", "jadwal_mata_kuliahs"
   add_foreign_key "respon_kuesioners", "mahasiswas", on_delete: :cascade
 end
