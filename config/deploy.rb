@@ -29,6 +29,18 @@ append :linked_dirs,
   "node_modules",
   "bundle"
 
+NODE_COMMAND_WRAPPER = <<~SHELL
+  export PATH=/home/ubuntu/.fnm:$PATH
+  eval "$(fnm env)"
+  fnm use v14.15
+SHELL
+
+before "deploy:assets:precompile", "init_ssh_command" do
+  SSHKit.config.command_map.prefix[:rake].unshift(NODE_COMMAND_WRAPPER)
+end
+
+Rake::Task["deploy:assets:backup_manifest"].clear_actions
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
