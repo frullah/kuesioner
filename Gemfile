@@ -41,6 +41,10 @@ group :development do
   gem "spring-commands-rspec", require: false
   gem "standard"
   gem "spring-commands-standard", require: false
+
+  gem "capistrano", "~> 3", require: false
+  gem "capistrano-rails", "~> 1", require: false
+  gem 'capistrano-rbenv', '~> 2'
 end
 
 group :test do
