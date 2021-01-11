@@ -20,7 +20,7 @@ if (process.env.RAILS_ENV === 'production') {
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js'
       ],
-      whitelistPatterns: [/^form-/, /^btn-/, /^custom-file/],
+      whitelistPatterns: [/^form-/, /^btn-/, /^custom-file/, /^sidebar/],
       whitelist: ['img', 'input', 'button', 'collapse', 'collapsing'],
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
     })
